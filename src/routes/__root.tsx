@@ -2,9 +2,8 @@ import React from "react";
 import {
   createRootRouteWithContext,
   Link,
-  Outlet,
 } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import { BackgroundImage } from "@mantine/core";
 
 export interface RouterContext {
   supabase: any;
@@ -14,16 +13,18 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootRouteWithLayout,
 });
 
+const headerStyle = {
+  background: "#364fc7",
+  padding: "11px 20px",
+  hight: "72px"
+}
+
 function RootRouteWithLayout() {
   return (
-    <>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </div>
-      <hr />
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
+    <div style={headerStyle}>
+      <Link to="/">
+        <img src="../../public/vite.svg" alt="" />
+      </Link>
+    </div>
   );
 }
