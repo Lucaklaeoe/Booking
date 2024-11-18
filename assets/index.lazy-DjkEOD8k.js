@@ -1,0 +1,1 @@
+import{J as n,b as c,j as o}from"./index-DJL4sEz0.js";function s(e){return n({...e,select:t=>e.select?e.select(t.context):t.context})}const x=c("/")({component:r});function r(){const e=s({from:"/"});return console.log(e),o.jsx("div",{children:o.jsx("h3",{children:"Welcome Home!"})})}export{x as Route};
