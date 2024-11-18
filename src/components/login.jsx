@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createClient } from '@supabase/supabase-js'
-import { Button } from '@mantine/core';
+import { Button, getFontSize } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
 
@@ -17,7 +17,6 @@ const inputStyle = {
     width: "690px",
     marginTop: "55px",
     color: "#364FC7"
-    
 }
 
 function Login() {

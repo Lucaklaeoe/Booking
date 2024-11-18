@@ -15,11 +15,10 @@ const loginStyle = {
 
 function RouteComponent() {
   return (
-    <div>
-      <container style={loginStyle}>
+    <div style={loginStyle}>
+      
         <Login />
-      <img style={{ width: "449px" , height: "427px" , marginTop: "15px"}} src="../../public/img/login-illustation.png" alt="Illustation" />
-      </container>
+      <img style={{ width: "449px" , height: "427px" , marginTop: "15px"}} src="img/login-illustation.png" alt="Illustration" />
       
     </div>
   )
