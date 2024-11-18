@@ -39,6 +39,7 @@ function RootRouteWithLayout() {
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Login (remove later)</Button>
         </Link>
       </div>
+      <Link to="/BookLokale">Booking</Link>
       <Outlet />
     </div>
   );
