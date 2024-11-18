@@ -8,8 +8,9 @@ import { Button } from '@mantine/core';
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
 
-export interface RouterContext {
+export interface RouterContext extends Record<any, any>{
   supabase: any;
+
 }
 
 export const Route = createRootRouteWithContext<RouterContext>()({
@@ -27,7 +28,7 @@ const headerStyle = {
 
 function RootRouteWithLayout() {
   return (
-    <div>
+    <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
         <Link to="/">
           <img src="../../public/vite.svg" alt="" />

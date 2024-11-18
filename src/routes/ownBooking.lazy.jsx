@@ -1,14 +1,24 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router';
+import { Title } from '@mantine/core';
+import OwnBookingList from './../components/ownbooking/ownBookingList';
+
 
 export const Route = createLazyFileRoute('/ownBooking')({
   component: ownBooking,
 })
 
+const ownBookingStyle = {
+  margin: "100px auto 0 auto",
+  width: "1164px",
+}
 function ownBooking() {
 
   return (
-    <div>
-      <h3>Welcome Home!!!!</h3>
+    <div style={ownBookingStyle}>
+
+      <Title order={1} style={{ color: "#364FC7" }}>Dine bookinger</Title>
+      <OwnBookingList/>
+
     </div>
   );
 }
