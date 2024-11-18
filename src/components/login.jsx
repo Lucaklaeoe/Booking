@@ -8,12 +8,6 @@ const supabaseUrl = "https://lxlvmpbsqfiqjdurdwig.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4bHZtcGJzcWZpcWpkdXJkd2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE1MDI4NTMsImV4cCI6MjA0NzA3ODg1M30.EIRPhE0e2_0Azy6vT1YihblhqaFf9tU4DDvA3hQAW5k"
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-const loginStyle = {
-    backgroundColor: "#D0EBFF",
-    marginLeft: "138px",
-    marginRight: "612px",
-}
-
 const buttonStyle = {
     backgroundColor: "#F59F00",
     marginTop: "40px",
@@ -23,6 +17,7 @@ const inputStyle = {
     width: "690px",
     marginTop: "55px",
     color: "#364FC7"
+    
 }
 
 function Login() {
@@ -48,7 +43,7 @@ function Login() {
     }
 
     return (
-        <div style={loginStyle}>
+        <div>
             <h1 style={{color: "#364FC7"}}>Login</h1>
             <form>
             <TextInput
