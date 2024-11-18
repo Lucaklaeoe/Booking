@@ -5,7 +5,7 @@ const supabaseUrl = "https://lxlvmpbsqfiqjdurdwig.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx4bHZtcGJzcWZpcWpkdXJkd2lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE1MDI4NTMsImV4cCI6MjA0NzA3ODg1M30.EIRPhE0e2_0Azy6vT1YihblhqaFf9tU4DDvA3hQAW5k"
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-function Signup() {
+function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -34,10 +34,10 @@ function Signup() {
                 <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
 
-                <button type="submit" onClick={handleSignup}>Signup</button>
+                <button type="submit" onClick={handleSignup}>Login</button>
             </form>
         </div>
     )
 }
 
-export default Signup;
+export default Login;
