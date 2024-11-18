@@ -28,22 +28,24 @@ function OwnBookingItem({dato, lokale, starttid, sluttid}) {
     return (
         <div style={itemStyle}>
             <div style={infoStyle}>
-                <p>{dato}</p>
+                <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "2px"}}>{dato}</p>
             </div>
 
             <div style={infoStyle}>
-                <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "10px"}}>{lokale}</p>
+                <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "2px"}}>{lokale}</p>
             </div>
 
             <div style={infoStyle}>
-                <p>{starttid}</p>
+                <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "2px"}}>{starttid}</p>
             </div>
 
             <div style={infoStyle}>
-                <p>{sluttid}</p>
+                <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "2px"}}> {sluttid}</p>
             </div>
             
-            <Button style={infoStyle} variant="filled" color="#C92A2A">Annuller booking</Button>
+            <div style={infoStyle}>
+                <p style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "2px"}}> Annuller booking</p>
+            </div>
         </div>
     )
 }
