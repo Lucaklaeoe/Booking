@@ -9,6 +9,7 @@ function RouteComponent() {
   return (
     <div>
       <Login />
+      <img src="./../../public/login-illustation.png" alt="Illustation" />
     </div>
   )
 }
