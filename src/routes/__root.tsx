@@ -31,7 +31,7 @@ function RootRouteWithLayout() {
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
         <Link to="/">
-          <img src="../../public/vite.svg" alt="" />
+          <img src="vite.svg" alt="" />
         </Link>
         <Link to="/ownBooking">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
