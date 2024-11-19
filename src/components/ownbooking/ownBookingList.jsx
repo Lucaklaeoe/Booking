@@ -1,4 +1,6 @@
 import OwnBookingItem from "./ownBookingItem";
+import { useRouteContext } from "@tanstack/react-router";
+
 
 const ownBookingListBarStyle = {
     display: "flex",
@@ -25,12 +27,15 @@ const ownBookingListStyle = {
 }
 
 const importet_data = [
-    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
-    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
-    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+    {id: 1, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+    {id: 2, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+    {id: 3, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
 ]
 
 function OwnBookingList() {
+
+    const context = useRouteContext({ from: "/ownBooking" });
+    console.log("hejehejeher" + context)
 
     return (
         <div>
@@ -43,7 +48,7 @@ function OwnBookingList() {
             </div>
             <div style={ownBookingListStyle}>
                 {importet_data.map((booking) => (
-                    <OwnBookingItem dato={booking.dato} lokale={booking.lokale} starttid={booking.starttid} sluttid={booking.sluttid} />
+                    <OwnBookingItem id={booking.id} dato={booking.dato} lokale={booking.lokale} starttid={booking.starttid} sluttid={booking.sluttid} />
                 ))}
             </div>
         </div>

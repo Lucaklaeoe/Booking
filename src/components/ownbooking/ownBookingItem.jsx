@@ -20,8 +20,11 @@ const infoStyle = {
     alignItems: "center",
 }
 
+function removeBooking(id){
+    //remove booking function
+}
 
-function OwnBookingItem({dato, lokale, starttid, sluttid}) {
+function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
 
     return (
         <div style={itemStyle}>
@@ -41,7 +44,7 @@ function OwnBookingItem({dato, lokale, starttid, sluttid}) {
                 <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "6px"}}> {sluttid}</p>
             </div>
             
-            <div style={{ ...infoStyle, cursor: "pointer"}}>
+            <div id={id} style={{ ...infoStyle, cursor: "pointer"}} onClick={() => removeBooking({id})}>
                 <p style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px"}}> Annuller booking</p>
             </div>
         </div>

@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js'
 import { Button } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
+import { useRouteContext } from "@tanstack/react-router";
+
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
@@ -32,10 +34,12 @@ function Login() {
         //     emailRedirectTo: 'https://example.com/welcome',
         //   },
         )
-        console.log("data", data)
-        console.log("error", error)
 
+        console.log("data", data)
+
+        console.log("error", error)
         setError(error.message)
+        
       }
       
     const handleSignup = (event) => {
@@ -43,13 +47,11 @@ function Login() {
         console.log(email, password);
         signUpNewUser();
     }
-
     function updatEmail(e){
 
         setEmail(e.target.value)
         setError(null)
     }
-
     function updatePassword(e){
         setPassword(e.target.value)
         setError(null)
