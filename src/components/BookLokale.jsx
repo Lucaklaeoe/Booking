@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Stepper } from '@mantine/core';
+import { Stepper, Button } from '@mantine/core';
 import classes from './Demo.module.css';
 import  './style.css';
 
@@ -9,7 +9,7 @@ const StepperStyle = {
 function BookLokale() {
   const [active, setActive] = useState(1);
 
-  return (<div>
+  return (<div >
     <Stepper style={StepperStyle} classNames={classes} active={active} onStepClick={setActive}>
       <Stepper.Step  description="Book lokale " />
       <Stepper.Step  description="Vælg tidspunkt" />
@@ -17,19 +17,21 @@ function BookLokale() {
     </Stepper>
     <div>
       <h1>Tider for den </h1>
-      <div style={{display: "flex"}}>
+      <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
+      background: "#A5D8FF",width:"1164px"}}>
         <div style={{display: "flex"}}>
             <h2>Grupperum - </h2>
         </div>
         <div className='time'>
-            <button>08.30-09.30</button>
-            <button>09.30-10.30</button>
-            <button>10.30-11.30</button>
-            <button>11.30-12.30</button>
-            <button>12.30-13.30</button>
-            <button>13.30-14.30</button>
-            <button>14.30-15.30</button>
-            <button>15.30-16.30</button>
+        <Button variant="filled" color="green">08.30-09.30</Button>
+        <Button variant="filled" color="green">09.30-10.30</Button>
+        <Button variant="filled" color="green">10.30-11.30</Button>
+        <Button variant="filled" color="green">11.30-12.30</Button>
+        <Button variant="filled" color="green">12.30-13.30</Button>
+        <Button variant="filled" color="green">13.30-14.30</Button>
+        <Button variant="filled" color="green">13.30-14.30</Button>
+        <Button variant="filled" color="green">15.30-16.30</Button>
+        <Button className='BookLokale' radius={"md"} size='xl' variant="filled" color="indigo">Button</Button>;
         </div>
       </div>
 
