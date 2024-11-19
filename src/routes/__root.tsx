@@ -18,12 +18,22 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 });
 
 const headerStyle = {
-  background: "#364fc7  ",
+  background: "#364fc7",
   padding: "11px 20px",
   hight: "80px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+}
+const footerStyle = {
+  padding: "50px 20px",
+  background: "#364fc7",
+  hight: "150px",
+  witdh: "100%",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: "100px"
 }
 
 function RootRouteWithLayout() {
@@ -31,7 +41,7 @@ function RootRouteWithLayout() {
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
         <Link to="/">
-          <img src="vite.svg" alt="" />
+          <img style={{height: "50px"}} src="cph-booking.png" alt="" />
         </Link>
         <Link to="/ownBooking">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
@@ -39,11 +49,17 @@ function RootRouteWithLayout() {
         <Link to="/login">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Login (remove later)</Button>
         </Link>
+        <Link to="/LokaleFilter">
+          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Booking (remove later)</Button>
+        </Link>
+        <Link to="/BookLokale">
+          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Lokaler (remove later)</Button>
+        </Link>
       </div>
-      <Link to="/LokaleFilter">Booking</Link>
-      <Link to="/BookLokale">Lokaler</Link>
       <Outlet />
-
+      <div style={footerStyle}>
+        <img style={{height: "50px"}} src="cph-booking.png" alt="" />
+      </div>
     </div>
   );
 }
