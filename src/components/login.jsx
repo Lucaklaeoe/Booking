@@ -44,6 +44,12 @@ function Login() {
         signUpNewUser();
     }
 
+    function updatEmail(e){
+
+        setEmail(e.target.value)
+        setError(null)
+    }
+
     return (
         <div>
             <h1 style={{color: "#364FC7"}}>Login</h1>
@@ -54,7 +60,7 @@ function Login() {
                 label="Mail"
                 placeholder="cph-business mail"
                 type="text"
-                value={email} onChange={(e) => setEmail(e.target.value)}
+                value={email} onChange={(e) => updatEmail(e)}
                 style={inputStyle}
                 error={error}
             />

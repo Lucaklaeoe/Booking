@@ -1,5 +1,3 @@
-import { Button } from '@mantine/core';
-
 const itemStyle = {
     display: "flex",
     alignItems: "center",
@@ -43,7 +41,7 @@ function OwnBookingItem({dato, lokale, starttid, sluttid}) {
                 <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "6px"}}> {sluttid}</p>
             </div>
             
-            <div style={infoStyle}>
+            <div style={{ ...infoStyle, cursor: "pointer"}}>
                 <p style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px"}}> Annuller booking</p>
             </div>
         </div>

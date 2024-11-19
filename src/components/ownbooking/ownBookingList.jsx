@@ -24,6 +24,12 @@ const ownBookingListStyle = {
     borderBottomRightRadius: "px",
 }
 
+const importet_data = [
+    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+    {dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
+]
+
 function OwnBookingList() {
 
     return (
@@ -36,7 +42,9 @@ function OwnBookingList() {
                 <p style={{ width: "20%", fontSize: "22px", fontWeight: "700" }}>Annuller booking</p>
             </div>
             <div style={ownBookingListStyle}>
-                <OwnBookingItem dato="01.01.2023" lokale="Lokale 1" starttid="10:00" sluttid="12:00" />                
+                {importet_data.map((booking) => (
+                    <OwnBookingItem dato={booking.dato} lokale={booking.lokale} starttid={booking.starttid} sluttid={booking.sluttid} />
+                ))}
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
 import { Title } from '@mantine/core';
 import OwnBookingList from './../components/ownbooking/ownBookingList';
+import { createLazyFileRoute } from "@tanstack/react-router";
+
 
 
 export const Route = createLazyFileRoute('/ownBooking')({
@@ -11,8 +12,9 @@ const ownBookingStyle = {
   margin: "100px auto 0 auto",
   width: "1164px",
 }
-function ownBooking() {
 
+
+function ownBooking() {
   return (
     <div style={ownBookingStyle}>
 

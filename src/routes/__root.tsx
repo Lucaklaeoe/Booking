@@ -3,14 +3,13 @@ import {
   createRootRouteWithContext,
   Link,
   Outlet,
+  Navigate,
 } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-
+import { createLazyFileRoute, useRouteContext } from "@tanstack/react-router";
 
 export interface RouterContext extends Record<any, any>{
   supabase: any;
-
 }
 
 export const Route = createRootRouteWithContext<RouterContext>()({
@@ -37,6 +36,15 @@ const footerStyle = {
 }
 
 function RootRouteWithLayout() {
+  /*
+  const context = useRouteContext({ from: "/login" });
+
+  //IF NOT LOGGED IN
+  if(context.userInfo === undefined || context.userInfo === null || context.userInfo.trim() === ""){
+    return <Navigate to="/login" replace />;
+  }
+    */
+
   return (
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
