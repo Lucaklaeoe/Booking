@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createClient } from '@supabase/supabase-js'
-import { Button, getFontSize } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
 
@@ -22,6 +22,7 @@ const inputStyle = {
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
     async function signUpNewUser() {
         console.log("sending to supabase", email, password);
@@ -33,6 +34,8 @@ function Login() {
         )
         console.log("data", data)
         console.log("error", error)
+
+        setError(error.message)
       }
       
     const handleSignup = (event) => {
@@ -53,6 +56,7 @@ function Login() {
                 type="text"
                 value={email} onChange={(e) => setEmail(e.target.value)}
                 style={inputStyle}
+                error={error}
             />
             <PasswordInput
                 size="xl"
@@ -62,6 +66,7 @@ function Login() {
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 style={inputStyle}
+                error={"Forkert adgangskode"}
             />
             <Button 
                 type="submit" 
