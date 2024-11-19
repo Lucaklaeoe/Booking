@@ -28,7 +28,7 @@ export default function App() {
 
   const context = {
     supabase: getSupabaseClient(),
-    userInfo,
+    userInfo: userInfo,
     setUserInfo,
   };
 

@@ -6,7 +6,6 @@ import {
   Navigate,
 } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
-import { createLazyFileRoute, useRouteContext } from "@tanstack/react-router";
 
 export interface RouterContext extends Record<any, any>{
   supabase: any;
