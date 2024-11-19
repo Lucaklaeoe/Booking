@@ -1,14 +1,14 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import BookLokale from './../components/BookLokale'
+import LokaleFilter from './../components/LokaleFilter'
 
-export const Route = createLazyFileRoute('/BookLokale')({
+export const Route = createLazyFileRoute('/LokaleFilter')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
   return (
     <div>
-      <BookLokale />
+      <LokaleFilter />
     </div>
   )
 }
