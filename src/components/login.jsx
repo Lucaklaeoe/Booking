@@ -50,6 +50,11 @@ function Login() {
         setError(null)
     }
 
+    function updatePassword(e){
+        setPassword(e.target.value)
+        setError(null)
+    }
+
     return (
         <div>
             <h1 style={{color: "#364FC7"}}>Login</h1>
@@ -69,10 +74,10 @@ function Login() {
                 radius="xs"
                 label="Adgangskode"
                 placeholder="Adgangskode"
-                value={password} onChange={(e) => setPassword(e.target.value)}
+                value={password} onChange={(e) => updatePassword(e)}
                 type="password"
                 style={inputStyle}
-                error={"Forkert adgangskode"}
+                error={error}
             />
             <Button 
                 type="submit" 
