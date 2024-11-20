@@ -36,19 +36,6 @@ const footerStyle = {
 }
 
 function RootRouteWithLayout() {
-  
-  //const context = useRouteContext({ from: "/login" });
-
-  //IF NOT LOGGED IN
-  // if(context.userInfo === undefined || context.userInfo === null || context.userInfo.trim() === ""){
-  //   return (
-  //     <div>
-  //       <Navigate to="/login" />;
-  //     </div>
-  //   )
-    
-  // }
-
 
   return (
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
