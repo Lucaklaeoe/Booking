@@ -1,6 +1,7 @@
 import { Title } from '@mantine/core';
 import OwnBookingList from './../components/ownbooking/ownBookingList';
 import { createLazyFileRoute } from "@tanstack/react-router";
+import { useRouteContext } from "@tanstack/react-router";
 
 
 
@@ -15,6 +16,8 @@ const ownBookingStyle = {
 
 
 function ownBooking() {
+  const context = useRouteContext({ from: "/ownBooking" });
+  console.log(context)
 
   return (
     <div style={ownBookingStyle}>

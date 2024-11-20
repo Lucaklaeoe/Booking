@@ -3,8 +3,10 @@ import {
   createRootRouteWithContext,
   Link,
   Outlet,
+  Navigate
 } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
+import { useRouteContext } from "@tanstack/react-router";
 
 export interface RouterContext extends Record<any, any> {
   supabase: any;
@@ -17,7 +19,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
 const headerStyle = {
   background: "#364fc7",
   padding: "11px 20px",
-  hight: "80px",
+  height: "80px",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -25,8 +27,8 @@ const headerStyle = {
 const footerStyle = {
   padding: "50px 20px",
   background: "#364fc7",
-  hight: "150px",
-  witdh: "100%",
+  height: "150px",
+  width: "100%",
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -34,14 +36,19 @@ const footerStyle = {
 }
 
 function RootRouteWithLayout() {
-  /*
+  
   const context = useRouteContext({ from: "/login" });
 
   //IF NOT LOGGED IN
-  if(context.userInfo === undefined || context.userInfo === null || context.userInfo.trim() === ""){
-    return <Navigate to="/login" replace />;
-  }
-    */
+  // if(context.userInfo === undefined || context.userInfo === null || context.userInfo.trim() === ""){
+  //   return (
+  //     <div>
+  //       <Navigate to="/login" />;
+  //     </div>
+  //   )
+    
+  // }
+
 
   return (
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
@@ -62,7 +69,7 @@ function RootRouteWithLayout() {
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Lokaler (remove later)</Button>
         </Link>
       </div>
-
+    
       <Outlet />
 
       <div style={footerStyle}>

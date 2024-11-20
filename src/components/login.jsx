@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { Button } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
+import { useRouteContext } from '@tanstack/react-router';
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
@@ -21,8 +22,6 @@ const inputStyle = {
 
 function Login() {
     const context = useRouteContext({ from: "/login" });
-    context.setUserInfo("yess");
-    console.log(context)
 
 
     const [email, setEmail] = useState('')
@@ -31,20 +30,20 @@ function Login() {
     const [passwordError, setpasswordError] = useState('')
 
     async function signUpNewUser() {
-        console.log("sending to supabase", email, password);
+        //console.log("sending to supabase", email, password);
         const { data, error } = await supabase.auth.signInWithPassword(
             {email: email,password: password,},
         )
 
+        //save data in context
         console.log("data", data)
         context.setUserInfo(data)
-        console.log("data", context.userInfo)
 
         console.log("error", error)
         setemailError(error.message)
         setpasswordError(error.message)
-        
-      }
+
+    }
       
     const handleSignup = (event) => {
         event.preventDefault();
