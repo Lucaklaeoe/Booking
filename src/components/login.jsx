@@ -34,12 +34,11 @@ function Login() {
         console.log("sending to supabase", email, password);
         const { data, error } = await supabase.auth.signInWithPassword(
             {email: email,password: password,},
-        //   options: {
-        //     emailRedirectTo: 'https://example.com/welcome',
-        //   },
         )
 
         console.log("data", data)
+        context.setUserInfo(data)
+        console.log("data", context.userInfo)
 
         console.log("error", error)
         setemailError(error.message)
