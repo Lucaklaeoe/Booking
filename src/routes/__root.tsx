@@ -37,7 +37,7 @@ const footerStyle = {
 
 function RootRouteWithLayout() {
   
-  const context = useRouteContext({ from: "/login" });
+  //const context = useRouteContext({ from: "/login" });
 
   //IF NOT LOGGED IN
   // if(context.userInfo === undefined || context.userInfo === null || context.userInfo.trim() === ""){
