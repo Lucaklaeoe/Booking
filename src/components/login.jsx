@@ -3,8 +3,6 @@ import { createClient } from '@supabase/supabase-js'
 import { Button } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
-import { useRouteContext } from "@tanstack/react-router";
-
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
@@ -29,7 +27,8 @@ function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    const [emailError, setemailError] = useState('')
+    const [passwordError, setpasswordError] = useState('')
 
     async function signUpNewUser() {
         console.log("sending to supabase", email, password);
@@ -43,7 +42,8 @@ function Login() {
         console.log("data", data)
 
         console.log("error", error)
-        setError(error.message)
+        setemailError(error.message)
+        setpasswordError(error.message)
         
       }
       
@@ -55,11 +55,11 @@ function Login() {
     function updatEmail(e){
 
         setEmail(e.target.value)
-        setError(null)
+        setemailError(null)
     }
     function updatePassword(e){
         setPassword(e.target.value)
-        setError(null)
+        setpasswordError(null)
     }
 
     return (
@@ -74,17 +74,19 @@ function Login() {
                 type="text"
                 value={email} onChange={(e) => updatEmail(e)}
                 style={inputStyle}
-                error={error}
+                error={emailError}
+                required
             />
             <PasswordInput
                 size="xl"
                 radius="xs"
-                label="Adgangskode"
+                label="Kode"
                 placeholder="Adgangskode"
                 value={password} onChange={(e) => updatePassword(e)}
                 type="password"
                 style={inputStyle}
-                error={error}
+                error={passwordError}
+                required
             />
             <Button 
                 type="submit" 
