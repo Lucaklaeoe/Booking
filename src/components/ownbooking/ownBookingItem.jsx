@@ -21,7 +21,7 @@ const infoStyle = {
 }
 
 function removeBooking(id){
-    //remove booking function
+    //function for remove booking 
 }
 
 function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {

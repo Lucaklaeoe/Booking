@@ -22,6 +22,11 @@ const inputStyle = {
 }
 
 function Login() {
+    const context = useRouteContext({ from: "/login" });
+    context.setUserInfo("yess");
+    console.log(context)
+
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')

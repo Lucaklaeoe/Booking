@@ -3,11 +3,10 @@ import {
   createRootRouteWithContext,
   Link,
   Outlet,
-  Navigate,
 } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
 
-export interface RouterContext extends Record<any, any>{
+export interface RouterContext extends Record<any, any> {
   supabase: any;
 }
 
@@ -63,7 +62,9 @@ function RootRouteWithLayout() {
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Lokaler (remove later)</Button>
         </Link>
       </div>
+
       <Outlet />
+
       <div style={footerStyle}>
         <img style={{height: "50px"}} src="cph-booking.png" alt="" />
       </div>

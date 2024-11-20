@@ -1,11 +1,18 @@
 import { useState } from 'react';
-import { DateInput } from '@mantine/dates';
-import { Button,Autocomplete } from '@mantine/core';
+import LedigeLokalerList from "./../components/filter/ledigeLokalerList";
+import Filter from './../components/filter/filter';
 
+const Container ={
+  display:"flex",
+  flexDirection: "column",
+}
 
 function LokaleFilter() {
-   const [Etage, setEtage] = useState('');
-   const lokaler =[
+  const [etage, setEtage] = useState('');
+  const [filterDate, setFilterDate] = useState('');
+
+  //imported data from supabase
+  const lokaler =[
     { id: 1, name: '1.1', value: 'Etage 1' },
     { id: 2, name: '1.3', value: 'Etage 1' },
     { id: 3, name: '1.4', value: 'Etage 1' },
@@ -37,95 +44,22 @@ function LokaleFilter() {
     { id: 29, name: '4.1', value: 'Etage 4' },
     { id: 30, name: '4.2', value: 'Etage 4' },
     { id: 31, name: '4.3', value: 'Etage 4' },
-   ]
-   const filteredLokaler = lokaler.filter((lokale) => lokale.value.includes(Etage));
-
-      const Container ={
-        display:"flex",
-        flexDirection: "column",
-      }
-      const BookLokaleStyle ={
-        display: "flex",
-        width:"926px",
-        borderRadius:"2px",
-        background: "#364FC7",
-        justifyContent:"center",
-        padding:"26px 55px",
-        gap: "32px",
-        color:"black"
-      }
-      const BookStyle = {
-        margin:"0 auto",
-        color: "#364FC7",
-        marginBottom:"140px"
-      }
-      const Lokaler = {
-        margin:"0 auto",
-        borderRadius: "8px",
-        background: "#A5D8FF",
-        width:"926px",
-        padding:"26px 55px",
-        color: "#364FC7",
-        marginBottom:"263px",
-      }
-      const LokaleOversigtStyle = {
-        display:"flex",
-        flexDirection:"column",
-        justifyContent:"space-between",
-        height:"515px",
-        overflowY:"scroll",
-       
-      }
-      const LokaleStyle = {
-        borderRadius:"2px",
-        background: "white",
-        color: "black",
-        display:"flex",
-        padding:"0 26px",
-        justifyContent:"space-between",
-        alignItems:"center",
-        marginBottom:"15px"
-      }
+  ]
      
-    return (
-        <div style={Container}>
-          <div style={BookStyle}>
-            <h1>Book Lokale</h1>
-        <div style={BookLokaleStyle}>
-        <Autocomplete
-      
-      label="Etage"
-      placeholder="Etage"
-      data={['Etage 1', 'Etage 2', 'Etage 3', 'Etage 4']}
-      value={Etage}
-      onChange={(value) => setEtage(value)}
-    />
-      <DateInput 
-          
-         valueFormat="YYYY MMM DD"
-          label="Dato"
-          placeholder="Dato input"
-           />
-
-          <Button variant="filled" color="yellow" size="xl" radius="xs" style={{ color: "black" }}>SØG HER</Button>
-          </div>
-          </div>
-          <div style={Lokaler}>
-          <h1>Ledige lokaler idag </h1>
-          <div style={LokaleOversigtStyle}>
-          {filteredLokaler.map((lokale) => (
-            <div key={lokale.id} style={LokaleStyle}>
-              <h3>{lokale.name}</h3>
-              <p>08:00 - 17:00</p>
-            
-              <Button component='a' href={' /BookLokale/${lokale.name}'} variant="filled" size="md">Book lokale </Button>
-           
-              </div>
-          ))}
-          </div>
-          </div>
-        </div>
-    )
+  return (
+    <div style={Container}>
+      <Filter
+        etage={etage}
+        setEtage={setEtage}
+        filterDate={filterDate}
+        setFilterDate={setFilterDate}
+      />
+      <LedigeLokalerList
+        lokaler={lokaler}
+        etage={etage}
+      />
+    </div>
+  )
 }
 
 export default LokaleFilter;

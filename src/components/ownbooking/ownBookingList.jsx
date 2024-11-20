@@ -1,6 +1,4 @@
 import OwnBookingItem from "./ownBookingItem";
-import { useRouteContext } from "@tanstack/react-router";
-
 
 const ownBookingListBarStyle = {
     display: "flex",
@@ -32,10 +30,8 @@ const importet_data = [
     {id: 3, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
 ]
 
-function OwnBookingList() {
 
-    const context = useRouteContext({ from: "/ownBooking" });
-    console.log("hejehejeher" + context)
+function OwnBookingList() {
 
     return (
         <div>
