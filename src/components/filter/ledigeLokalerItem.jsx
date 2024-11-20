@@ -18,7 +18,7 @@ function LedigeLokalerItem({lokale}) {
         <h3>{lokale.name}</h3>
         <p>08:00 - 17:00</p>
         
-        <Button component='a' href={' /BookLokale/${lokale.name}'} variant="filled" size="md">Book lokale </Button>
+        <Button component='a' href={' /Booking/BookLokale'} variant="filled" size="md">Book lokale </Button>
     </div>
   )
 }
