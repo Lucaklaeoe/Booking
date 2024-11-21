@@ -3,6 +3,18 @@ import { Link } from '@tanstack/react-router';
 
 function confirm({name}) {
 
+    const centerBackground={
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        right: "0",
+        bottom: "0",
+        backgroundColor: "rgba(0, 0, 0, 0.7)",
+    }
+
     const confirmStyle={
         display:"flex",
         justifyContent:"center",
@@ -12,9 +24,6 @@ function confirm({name}) {
         bordorRadius: "4px",
         padding: "26px 55px",
         width: "762px",
-        position: "fixed",
-        top: "10%",
-        left: "23%",
     }
     const buttonStyle = {
         backgroundColor: "#F59F00",
@@ -23,7 +32,7 @@ function confirm({name}) {
     }
 
     return (
-        <div style={{background: "black"}}>
+        <div style={centerBackground}>
             <div style={confirmStyle}>
                 
                 <h1 style={{color: "#2B8A3E"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="../img/check.svg" alt="" />Bookning bekræftet</h1>
