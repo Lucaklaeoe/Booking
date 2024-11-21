@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 
-function deniedTeacher() {
+function deniedTeacher({name}) {
 
     const deniedStyle={
         display:"flex",
@@ -28,7 +28,7 @@ function deniedTeacher() {
                 
                 <h1 style={{color: "#C92A2A"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/no.svg" alt="nægtet mærke" />Bookning bekræftet</h1>
                 <p>For at overskrive bookingen vedr. </p>
-                <p>Lokale: <b>3.9</b></p>
+                <p>Lokale: <b>{name}</b></p>
                 <p>Dato: <b>08/12/2024</b> </p>
                 <p>Tidspunkt: <b>13:00 - 15:00</b></p>
                 <p>Skal du kontakte <b>XX (cph-jj123@cphbusiness.dk)</b> selv, da der er under 24 timer til deres booking af lokalet starter. </p>
