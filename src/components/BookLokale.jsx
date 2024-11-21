@@ -2,24 +2,19 @@ import { useState } from 'react';
 import { Stepper, Button } from '@mantine/core';
 import classes from './Demo.module.css';
 import  './style.css';
-import Confirm from './popup/confirm';
 
 const StepperStyle = {
     width: '700px',
 }
 
-function BookLokale() {
+function BookLokale({name}) {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const handleClick = (index) => {
+    const handleClick = (index) => {
     setActiveButton(index);
+    
   };
   
-  const openPopup = () => {
-    setIsPopupOpen(!isPopupOpen); // Skift mellem at vise og skjule popup
-  };
-
   return (<div >
     <Stepper style={StepperStyle} classNames={classes} active={active} onStepClick={setActive}>
       <Stepper.Step  description="Book lokale " />
@@ -32,7 +27,7 @@ function BookLokale() {
       <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
       background: "#A5D8FF",width:"1164px"}}>
         <div style={{display: "flex"}}>
-            <h2>Grupperum -  </h2>
+            <h2>Grupperum - {name} </h2>
         </div>
         <div className='time'>
         <Button
@@ -68,8 +63,7 @@ function BookLokale() {
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
-        <Button onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
-        {isPopupOpen && <Confirm onClose={openPopup} />}
+        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
         </div>
       </div>
 
