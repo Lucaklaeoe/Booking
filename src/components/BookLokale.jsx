@@ -70,7 +70,7 @@ function BookLokale({name}) {
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
         <Button onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
-        {isPopupOpen && <Confirm onClose={openPopup} />}
+        {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
         </div>
       </div>
 
