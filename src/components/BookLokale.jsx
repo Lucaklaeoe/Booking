@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { Stepper, Button } from '@mantine/core';
 import classes from './Demo.module.css';
-
-
 import  './style.css';
 
 const StepperStyle = {
     width: '700px',
 }
+
 function BookLokale() {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
-
+  const [Booked, setBooked] = useState(false);
   const handleClick = (index) => {
     setActiveButton(index);
+    
   };
   return (<div >
     <Stepper style={StepperStyle} classNames={classes} active={active} onStepClick={setActive}>
@@ -21,6 +21,7 @@ function BookLokale() {
       <Stepper.Step  description="Vælg tidspunkt" />
       <Stepper.Step  description="Booking færdig" />
     </Stepper>
+    <div style={{display: "flex", justifyContent:"center"}}>
     <div>
       <h1>Tider for den </h1>
       <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
@@ -35,7 +36,7 @@ function BookLokale() {
         onClick={() => handleClick(0)} >08.30-09.30</Button>
 
         <Button  variant={activeButton === 1 ? 'filled' : 'filled'}
-        color={activeButton === 1 ? 'cyan' : 'green'}
+        color={activeButton === 1 ? 'cyan' : 'green' }
         onClick={() => handleClick(1)} >09.30-10.30</Button>
 
         <Button  variant={activeButton === 2 ? 'filled' : 'filled'}
@@ -62,10 +63,11 @@ function BookLokale() {
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
-        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>;
+        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
         </div>
       </div>
 
+    </div>
     </div>
     </div>
   );
