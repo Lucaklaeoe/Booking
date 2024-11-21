@@ -15,6 +15,7 @@ function BookLokale() {
   const handleClick = (index) => {
     setActiveButton(index);
   };
+  
   return (<div >
     <Stepper style={StepperStyle} classNames={classes} active={active} onStepClick={setActive}>
       <Stepper.Step  description="Book lokale " />
