@@ -1,4 +1,6 @@
 import OwnBookingItem from "./ownBookingItem";
+import { useState, useEffect } from "react";
+import { useRouteContext } from "@tanstack/react-router";
 
 const ownBookingListBarStyle = {
     display: "flex",
@@ -24,14 +26,30 @@ const ownBookingListStyle = {
     borderBottomRightRadius: "px",
 }
 
-const importet_data = [
-    {id: 1, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
-    {id: 2, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
-    {id: 3, dato: "01.01.2023", lokale: "Etage 1", starttid: "08:00", sluttid: "17:00"},
-]
-
-
 function OwnBookingList() {
+    const [userBookingData, setUserBookingData] = useState([])
+    const context = useRouteContext({ from: "/ownBooking" });
+    const userId = context.userInfo.user.id
+
+    const getUserBookings = async () => {
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
+        const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${userId}`, {
+            headers: {
+                "apikey": supabaseKey,
+                "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+            }
+        })
+        const data = await response.json();
+
+        setUserBookingData(data)
+        console.log(data)
+        console.log(context.userInfo.user.id)
+    }
+
+    useEffect(() => {
+        getUserBookings()
+
+    }, []);
 
     return (
         <div>
@@ -43,8 +61,8 @@ function OwnBookingList() {
                 <p style={{ width: "20%", fontSize: "22px", fontWeight: "700" }}>Annuller booking</p>
             </div>
             <div style={ownBookingListStyle}>
-                {importet_data.map((booking) => (
-                    <OwnBookingItem id={booking.id} dato={booking.dato} lokale={booking.lokale} starttid={booking.starttid} sluttid={booking.sluttid} />
+                {userBookingData.map((booking) => (
+                    <OwnBookingItem id={booking.id} dato={booking.bookingDate} lokale={booking.roomNumber} starttid={booking.startTime} sluttid={booking.endTime} />
                 ))}
             </div>
         </div>

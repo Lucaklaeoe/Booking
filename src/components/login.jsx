@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { Button } from '@mantine/core';
 import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
-import { useRouteContext } from '@tanstack/react-router';
+import { useRouteContext, Navigate } from '@tanstack/react-router';
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
@@ -24,6 +24,16 @@ function Login() {
     const context = useRouteContext({ from: "/login" });
 
 
+    // if(localStorage.getItem("token") != null){
+    //     console.log("token", localStorage.getItem("token"))
+    //     context.setUserInfo(localStorage.getItem("token"))
+    //     return(
+    //         <div>
+    //             <Navigate to="/"></Navigate>
+    //         </div>
+    //     )
+    // }
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setemailError] = useState('')
@@ -34,10 +44,12 @@ function Login() {
         const { data, error } = await supabase.auth.signInWithPassword(
             {email: email,password: password,},
         )
+        .then()
 
         //save data in context
-        console.log("data", data)
         context.setUserInfo(data)
+        console.log("data", data)
+
 
         console.log("error", error)
         setemailError(error.message)
