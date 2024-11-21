@@ -18,7 +18,7 @@ function BookLokale({name}) {
   };
 
   const openPopup = () => {
-    setIsPopupOpen(!isPopupOpen); // Skift mellem åben og lukket
+    setIsPopupOpen(!isPopupOpen);
   };
   
   return (<div >
