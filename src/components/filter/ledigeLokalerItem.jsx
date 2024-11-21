@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core';
+import { Link } from '@tanstack/react-router';
 
 const LokaleStyle = {
     borderRadius:"2px",
@@ -17,8 +18,8 @@ function LedigeLokalerItem({lokale}) {
     <div key={lokale.id} style={LokaleStyle}>
         <h3>{lokale.name}</h3>
         <p>08:00 - 17:00</p>
-        
-        <Button component='a' href={' /Booking/BookLokale'} variant="filled" size="md">Book lokale </Button>
+        <Link to={`/BookLokale/${lokale.name}`}><Button component='a'    variant="filled" size="md">Book lokale </Button></Link>
+       
     </div>
   )
 }
