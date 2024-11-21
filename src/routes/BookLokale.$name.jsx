@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import BookLokale from '../components/BookLokale'
+import Confirm from '../components/popup/confirm'
 
 export const Route = createFileRoute('/BookLokale/$name')({
   component: RouteComponent,
@@ -11,6 +12,7 @@ function RouteComponent() {
     <div>
       
       <BookLokale name={name} />
+      <Confirm name={name}/>
     </div>
   )
 }

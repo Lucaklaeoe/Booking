@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 
-function confirm() {
+function confirm({name}) {
 
     const confirmStyle={
         display:"flex",
@@ -23,11 +23,11 @@ function confirm() {
     }
 
     return (
-        <div>
+        <div style={{background: "black"}}>
             <div style={confirmStyle}>
                 
                 <h1 style={{color: "#2B8A3E"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="../img/check.svg" alt="" />Bookning bekræftet</h1>
-                <p>Lokale: <b>3.9</b></p>
+                <p>Lokale: <b>{name}</b></p>
                 <p>Dato: <b>08/12/2024</b></p>
                 <p>Tidspunkt: <b>13:00 - 15:00</b></p>
                 <p>Vær opmærksom på at hvis du er studerende kan få din booking overskrevet  af en underviser, hvis der er mere end 24 timer til din booking. Du vil få en mail med begrundelse for aflysningen. </p>
