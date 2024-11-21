@@ -1,16 +1,25 @@
-import { createLazyFileRoute, useRouteContext } from "@tanstack/react-router";
+import LokaleFilter from './../components/LokaleFilter'
+import { createLazyFileRoute, useRouteContext } from '@tanstack/react-router'
+import { Navigate } from '@tanstack/react-router'
 
-export const Route = createLazyFileRoute("/")({
-  component: Index,
-});
+export const Route = createLazyFileRoute('/')({
+  component: RouteComponent,
+})
 
-function Index() {
+function RouteComponent() {
+  //er loggede ind?
   const context = useRouteContext({ from: "/" });
-  console.log(context);
+  if(context.userInfo == undefined || context.userInfo == null || context.userInfo == ""){
+    return(
+      <div>
+        <Navigate to="/login"></Navigate>
+      </div>
+    )    
+  }
 
   return (
     <div>
-      <h3>Welcome Home!</h3>
+      <LokaleFilter />
     </div>
-  );
+  )
 }

@@ -3,10 +3,8 @@ import {
   createRootRouteWithContext,
   Link,
   Outlet,
-  Navigate
 } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
-import { useRouteContext } from "@tanstack/react-router";
 
 export interface RouterContext extends Record<any, any> {
   supabase: any;
@@ -36,7 +34,6 @@ const footerStyle = {
 }
 
 function RootRouteWithLayout() {
-
   return (
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
@@ -49,8 +46,8 @@ function RootRouteWithLayout() {
         <Link to="/login">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Login (remove later)</Button>
         </Link>
-        <Link to="/LokaleFilter">
-          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Booking (remove later)</Button>
+        <Link to="/">
+          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>index (gamle lokale filter) (remove later)</Button>
         </Link>
         <Link to="/BookLokale">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Lokaler (remove later)</Button>
