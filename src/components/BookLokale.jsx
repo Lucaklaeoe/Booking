@@ -8,7 +8,7 @@ const StepperStyle = {
     width: '700px',
 }
 
-function BookLokale({name }) {
+function BookLokale({name}) {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);

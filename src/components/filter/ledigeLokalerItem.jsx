@@ -1,5 +1,5 @@
 import { Button } from '@mantine/core';
-import { Link } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 
 const LokaleStyle = {
     borderRadius:"2px",
@@ -13,13 +13,18 @@ const LokaleStyle = {
 }
 
 function LedigeLokalerItem({lokale}) {
+  const navigate = useNavigate({from: "/"})
+
+  const handleClick = () => {
+    navigate({to:'/BookLokale/$name',params:{name:lokale.name}})
+  };
 
   return (
     <div key={lokale.id} style={LokaleStyle}>
         <h3>{lokale.name}</h3>
         <p>08:00 - 17:00</p>
-        <Link to={`/BookLokale/${lokale.name}`}><Button component='a'    variant="filled" size="md">Book lokale </Button></Link>
-       
+        
+        <Button component='a' onClick={handleClick} variant="filled" size="md">Book lokale </Button>
     </div>
   )
 }
