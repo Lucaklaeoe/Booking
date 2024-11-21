@@ -2,18 +2,23 @@ import { useState } from 'react';
 import { Stepper, Button } from '@mantine/core';
 import classes from './Demo.module.css';
 import  './style.css';
+import Confirm from './popup/confirm.jsx';
 
 const StepperStyle = {
     width: '700px',
 }
 
-function BookLokale() {
+function BookLokale({name}) {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
-  const [Booked, setBooked] = useState(false);
-  const handleClick = (index) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const handleClick = (index) => {
     setActiveButton(index);
-    
+  };
+
+  const openPopup = () => {
+    setIsPopupOpen(!isPopupOpen);
   };
   
   return (<div >
@@ -24,11 +29,11 @@ function BookLokale() {
     </Stepper>
     <div style={{display: "flex", justifyContent:"center"}}>
     <div>
-      <h1>Tider for den </h1>
+      <h1>Tider for den  </h1>
       <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
       background: "#A5D8FF",width:"1164px"}}>
         <div style={{display: "flex"}}>
-            <h2>Grupperum -  </h2>
+            <h2>Grupperum - {name} </h2>
         </div>
         <div className='time'>
         <Button
@@ -64,7 +69,8 @@ function BookLokale() {
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
-        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+        <Button onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+        {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
         </div>
       </div>
 

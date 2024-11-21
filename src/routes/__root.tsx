@@ -49,9 +49,7 @@ function RootRouteWithLayout() {
         <Link to="/">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>index (gamle lokale filter) (remove later)</Button>
         </Link>
-        <Link to="/BookLokale">
-          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Lokaler (remove later)</Button>
-        </Link>
+        
       </div>
     
       <Outlet />
