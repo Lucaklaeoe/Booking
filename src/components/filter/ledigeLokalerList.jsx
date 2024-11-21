@@ -12,7 +12,7 @@ const Lokaler = {
 const LokaleOversigtStyle = {
   display:"flex",
   flexDirection:"column",
-  justifyContent:"space-between",
+
   height:"515px",
   overflowY:"scroll",
  

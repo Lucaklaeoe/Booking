@@ -7,7 +7,7 @@ const StepperStyle = {
     width: '700px',
 }
 
-function BookLokale({name}) {
+function BookLokale({name }) {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
     const handleClick = (index) => {
@@ -23,7 +23,7 @@ function BookLokale({name}) {
     </Stepper>
     <div style={{display: "flex", justifyContent:"center"}}>
     <div>
-      <h1>Tider for den </h1>
+      <h1>Tider for den {dato} </h1>
       <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
       background: "#A5D8FF",width:"1164px"}}>
         <div style={{display: "flex"}}>
@@ -63,7 +63,7 @@ function BookLokale({name}) {
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
-        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">BOOK LOKALE</Button>
         </div>
       </div>
 
