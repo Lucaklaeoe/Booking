@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Stepper, Button } from '@mantine/core';
 import classes from './Demo.module.css';
 import  './style.css';
+import Confirm from './popup/confirm.jsx';
 
 const StepperStyle = {
     width: '700px',
@@ -10,9 +11,14 @@ const StepperStyle = {
 function BookLokale({name}) {
   const [active, setActive] = useState(0);
   const [activeButton, setActiveButton] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
     const handleClick = (index) => {
     setActiveButton(index);
-    
+  };
+
+  const openPopup = () => {
+    setIsPopupOpen(!isPopupOpen); // Skift mellem åben og lukket
   };
   
   return (<div >
@@ -63,7 +69,8 @@ function BookLokale({name}) {
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
 
-        <Button className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+        <Button onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+        {isPopupOpen && <Confirm onClose={openPopup} />}
         </div>
       </div>
 
