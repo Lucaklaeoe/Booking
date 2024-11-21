@@ -1,9 +1,9 @@
 import { Button } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 
-function confirm() {
+function deniedTeacher() {
 
-    const confirmStyle={
+    const deniedStyle={
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
@@ -24,21 +24,22 @@ function confirm() {
 
     return (
         <div>
-            <div style={confirmStyle}>
+            <div style={deniedStyle}>
                 
-                <h1 style={{color: "#2B8A3E"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="godtkent mærke" />Bookning bekræftet</h1>
+                <h1 style={{color: "#C92A2A"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/no.svg" alt="nægtet mærke" />Bookning bekræftet</h1>
+                <p>For at overskrive bookingen vedr. </p>
                 <p>Lokale: <b>3.9</b></p>
-                <p>Dato: <b>08/12/2024</b></p>
+                <p>Dato: <b>08/12/2024</b> </p>
                 <p>Tidspunkt: <b>13:00 - 15:00</b></p>
-                <p>Din booking har nu overskrevet en andens, og der bliver sendt en besked til vedkommende. </p>
-                <Link to={"ownBooking"}>
+                <p>Skal du kontakte <b>XX (cph-jj123@cphbusiness.dk)</b> selv, da der er under 24 timer til deres booking af lokalet starter. </p>
+                <Link to={"BookLaokale"}>
                     <Button 
                         type="submit" 
                         variant="filled" 
                         color="#F08C00" 
                         size="xl" 
                         radius="md" 
-                        style={buttonStyle}>Til forsiden</Button>
+                        style={buttonStyle}>Tilbage til bookingsiden</Button>
 
                 </Link>
                 
@@ -48,4 +49,4 @@ function confirm() {
     )
 }
 
-export default confirm
+export default deniedTeacher
