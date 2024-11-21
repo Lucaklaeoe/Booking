@@ -29,7 +29,7 @@ function BookLokale({name}) {
     </Stepper>
     <div style={{display: "flex", justifyContent:"center"}}>
     <div>
-      <h1>Tider for den {dato} </h1>
+      <h1>Tider for den  </h1>
       <div style={{display: "flex", justifySelf:"center", justifyContent:"center",borderRadius: "9px",
       background: "#A5D8FF",width:"1164px"}}>
         <div style={{display: "flex"}}>
