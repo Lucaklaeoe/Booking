@@ -1,3 +1,6 @@
+import Cancellation from "../popup/cancellation";
+import { useState } from "react";
+
 const itemStyle = {
     display: "flex",
     alignItems: "center",
@@ -25,6 +28,11 @@ function removeBooking(id){
 }
 
 function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const openPopup = () => {
+        setIsPopupOpen(!isPopupOpen);
+      };
 
     return (
         <div style={itemStyle}>
@@ -45,8 +53,9 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
             </div>
             
             <div id={id} style={{ ...infoStyle, cursor: "pointer"}} onClick={() => removeBooking({id})}>
-                <p style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px"}}> Annuller booking</p>
+                <button onClick={openPopup} style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px", color: "white", border: "none"}}> Annuller booking</button>
             </div>
+            {isPopupOpen && <Cancellation onClose={openPopup}/>}
         </div>
     )
 }
