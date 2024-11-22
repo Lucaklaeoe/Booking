@@ -25,9 +25,8 @@ const centerBackground={
     const buttonStyle = {
         color: "white",
     }
-function cancellation({onClose, starttid, sluttid}) {
+function cancellation({onClose, onConfirm, starttid, sluttid}) {
 
-    
 
     return (
         <div style={centerBackground}>
@@ -37,6 +36,7 @@ function cancellation({onClose, starttid, sluttid}) {
                 <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                 <div style={{display:"flex", gap:"100px", marginTop:"30px"}}>
                     <Button 
+                        onClick={onConfirm}
                         variant="filled" 
                         color="#2B8A3E" 
                         size="lg" 
