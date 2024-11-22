@@ -1,9 +1,6 @@
 import { Button } from '@mantine/core';
-import { Link } from '@tanstack/react-router';
 
-function cancellation() {
-
-    const centerBackground={
+const centerBackground={
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
@@ -26,33 +23,35 @@ function cancellation() {
         width: "762px",
     }
     const buttonStyle = {
-        backgroundColor: "#F59F00",
-        marginTop: "29px",
-        color: "black",
+        color: "white",
     }
+function cancellation({onClose, starttid, sluttid}) {
+
+    
 
     return (
         <div style={centerBackground}>
             <div style={cancellationStyle}>
                 
                 <h1 style={{color: "#364FC7"}}>Vil du annullere din bookning?</h1>
-                <p>Lokale: <b></b></p>
-                <p>Dato: <b>08/12/2024</b></p>
-                <p>Tidspunkt: <b>13:00 - 15:00</b></p>
-                <p>Vær opmærksom på at hvis du er studerende kan få din booking overskrevet  af en underviser, hvis der er mere end 24 timer til din booking. Du vil få en mail med begrundelse for aflysningen. </p>
-                <br></br>
-                <p>Er der under 24 timer til din booking og en underviser vil booke lokalet, vil du få en mail med en anmodning om at overtage bookingen. Du må selv bestemme om du vil beholde eller overgive bookingen.</p>
-                <Link to={"ownBooking"}>
+                <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
+                <div style={{display:"flex", gap:"100px", marginTop:"30px"}}>
                     <Button 
-                        type="submit" 
                         variant="filled" 
-                        color="#F08C00" 
-                        size="xl" 
+                        color="#2B8A3E" 
+                        size="lg" 
                         radius="md" 
-                        style={buttonStyle}>Til forsiden</Button>
-
-                </Link>
-                
+                        style={buttonStyle}>Ja
+                    </Button>
+                    <Button
+                        onClick={onClose}
+                        variant="filled" 
+                        color="#C92A2A" 
+                        size="lg" 
+                        radius="md" 
+                        style={buttonStyle}>Nej
+                    </Button>
+                </div>
             </div>
         </div>
         

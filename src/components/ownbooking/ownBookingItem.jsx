@@ -55,7 +55,7 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
             <div id={id} style={{ ...infoStyle, cursor: "pointer"}} onClick={() => removeBooking({id})}>
                 <button onClick={openPopup} style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px", color: "white", border: "none"}}> Annuller booking</button>
             </div>
-            {isPopupOpen && <Cancellation onClose={openPopup}/>}
+            {isPopupOpen && <Cancellation onClose={openPopup} starttid={starttid} sluttid={sluttid}/>}
         </div>
     )
 }
