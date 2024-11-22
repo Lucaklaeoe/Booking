@@ -1,21 +1,22 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import BookLokale from '../components/booklokale/BookLokale'
 import Steps from '../components/booklokale/steps'
-import { useRouteContext } from '@tanstack/react-router'
+import { useState } from 'react'
 
 export const Route = createLazyFileRoute('/BookLokale')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  const context = useRouteContext({ from: "/BookLokale" });
 
-  console.log(context.bookingInfo)
+  const [stepper, setStepper] = useState("1");
 
   return (
-    <div>
-      <Steps />
-      <BookLokale />
+    <div style={{margin:"50px auto 0 auto", width:"1164px"}}>
+      <Steps
+        active={stepper}
+      />
+      <BookLokale setStepper={setStepper}/>
     </div>
   )
 }

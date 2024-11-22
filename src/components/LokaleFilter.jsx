@@ -9,31 +9,29 @@ const Container ={
 
 function LokaleFilter() {
   const [etage, setEtage] = useState('');
-
   const [filterDate, setFilterDate] = useState(new Date());
 
   //chatgpt kode formater om til yyyy-mm-dd
   const formattedDate = filterDate.toISOString().split('T')[0];
 
-  //imported data from supabase
   const lokaleListe = [
     //1
-    "Audiotoriet",
-    "Lobbyen",
-    "3D print",
+    {lokale: "Audiotoriet", etage: "1"},
+    {lokale: "Lobbyen", etage: "1"},
+    {lokale: "3D print", etage: "1"},
     //2
-    "Medialab",
+    {lokale: "Medialab", etage: "2"},
     //3
-    "3.1",
-    "3.2",
-    "3.4",
-    "3.5",
-    "3.6",
-    "3.7",
-    "3.8 Open Learning",
-    "3.9 Open Learning",
-    "3.10",
-    "3.11",
+    {lokale: "3.1", etage: "3"},
+    {lokale: "3.2", etage: "3"},
+    {lokale: "3.4", etage: "3"},
+    {lokale: "3.5", etage: "3"},
+    {lokale: "3.6", etage: "3"},
+    {lokale: "3.7", etage: "3"},
+    {lokale: "3.8 Open Learning", etage: "3"},
+    {lokale: "3.9 Open Learning", etage: "3"},
+    {lokale: "3.10", etage: "3"},
+    {lokale: "3.11", etage: "3"},
   ];
 
   const times = [

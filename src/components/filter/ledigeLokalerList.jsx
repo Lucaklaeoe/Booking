@@ -40,14 +40,16 @@ function LedigeLokalerList({lokaler, times, date}) {
     for (let i = 0; i < lokaler.length; i++) {
       for (let j = 0; j < times.length; j++) {
         for (let k = 0; k < data.length; k++) {
-          if(lokaler[i] == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3) && times[j].endTime == data[k].endTime.slice(0, -3)) {
+          if(lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3) && times[j].endTime == data[k].endTime.slice(0, -3)) {
             
           }
           else{
             lokaleAndTime.push({ 
-              lokale: lokaler[i], 
+              lokale: lokaler[i].lokale, 
+              etage: lokaler[i].etage, 
               startTime: times[j].startTime, 
-              endTime: times[j].endTime 
+              endTime: times[j].endTime, 
+              date: date 
             });
           }
         }
@@ -65,11 +67,14 @@ function LedigeLokalerList({lokaler, times, date}) {
     <div style={Lokaler}>
         <h1>Ledige lokaler idag </h1>
 
+        <div style={{display:"flex", flexDirection:"row", justifyContent:"flex-start", gap:"33%", color: "#5C5F66"}}>
+          <p>Lokale</p>
+          <p>Ledige Tider</p>
+        </div>
         <div style={LokaleOversigtStyle}>
-
         {
           bookings.map((data) => (
-            <LedigeLokalerItem lokale={data.lokale} startTime={data.startTime} endTime={data.endTime}/>
+            <LedigeLokalerItem lokale={data.lokale} etage={data.etage} startTime={data.startTime} endTime={data.endTime} date={data.date}/>
           ))
         }
 
