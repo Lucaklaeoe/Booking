@@ -1,8 +1,6 @@
 import { Button } from '@mantine/core';
 
-function confirmCancellation() {
-
-    const centerBackground={
+const centerBackground={
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
@@ -29,6 +27,9 @@ function confirmCancellation() {
         marginTop: "29px",
         color: "black",
     }
+function confirmCancellation() {
+
+    
 
     return (
         <div style={centerBackground}>
