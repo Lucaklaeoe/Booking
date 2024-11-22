@@ -12,25 +12,18 @@ const LokaleStyle = {
     marginBottom:"15px"
 }
 
-function LedigeLokalerItem({lokale, date}) {
+function LedigeLokalerItem({lokale, startTime, endTime}) {
 
   const context = useRouteContext({ from: "/" });
 
   function handleButtonClick() {
-    
-    context.setBookingInfo({
-      lokale: lokale.name,
-      date: date,
-      // startTime: lokale.startTime,
-      // endTime: lokale.endTime,
-      etage: lokale.etage
-    })
+    console.log("yes")
   }
 
   return (
     <div key={lokale.id} style={LokaleStyle}>
-        <h3>{lokale.name}</h3>
-        <p>08:00 - 17:00</p>
+        <h3 style={{width:"100px"}}>{lokale}</h3>
+        <p>{startTime} - {endTime}</p>
         
         <Link to="/BookLokale">
           <Button component='a' onClick={handleButtonClick} variant="filled" size="md">Book lokale </Button>

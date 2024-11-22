@@ -9,42 +9,43 @@ const Container ={
 
 function LokaleFilter() {
   const [etage, setEtage] = useState('');
+
   const [filterDate, setFilterDate] = useState(new Date());
 
+  //chatgpt kode formater om til yyyy-mm-dd
+  const formattedDate = filterDate.toISOString().split('T')[0];
+
   //imported data from supabase
-  const lokaler =[
-    { id: 1, name: '1.1', value: 'Etage 1', startTime: '8:30', endTime:"9:30"},
-    { id: 2, name: '1.3', value: 'Etage 1', startTime: '8:30', endTime:"9:30"},
-    { id: 3, name: '1.4', value: 'Etage 1', startTime: '8:30', endTime:"9:30"},
-    { id: 4, name: '2.1', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 5, name: '2.3', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 6, name: '2.4', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 7, name: '2.5', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 8, name: '2.6', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 9, name: '2.7', value: 'Etage 2', startTime: '8:30', endTime:"9:30"},
-    { id: 10, name: '2.8', value: 'Etage 2' },
-    { id: 11, name: '2.9', value: 'Etage 2' },
-    { id: 12, name: '2.10', value: 'Etage 2' },
-    { id: 13, name: '3.1', value: 'Etage 3' },
-    { id: 14, name: '3.2', value: 'Etage 3' },
-    { id: 15, name: '3.3', value: 'Etage 3' },
-    { id: 16, name: '3.4', value: 'Etage 3' },
-    { id: 17, name: '3.5', value: 'Etage 3' },
-    { id: 18, name: '3.6', value: 'Etage 3' },
-    { id: 19, name: '3.7', value: 'Etage 3' },
-    { id: 20, name: '3.8', value: 'Etage 3' },
-    { id: 21, name: '3.9', value: 'Etage 3' },
-    { id: 22, name: '3.10', value: 'Etage 3' },
-    { id: 23, name: '3.11', value: 'Etage 3' },
-    { id: 24, name: '3.12', value: 'Etage 3' },
-    { id: 25, name: '3.13', value: 'Etage 3' },
-    { id: 26, name: '3.14', value: 'Etage 3' },
-    { id: 27, name: '3.15', value: 'Etage 3' },
-    { id: 28, name: '3.16', value: 'Etage 3' },
-    { id: 29, name: '4.1', value: 'Etage 4' },
-    { id: 30, name: '4.2', value: 'Etage 4' },
-    { id: 31, name: '4.3', value: 'Etage 4' },
-  ]
+  const lokaleListe = [
+    //1
+    "Audiotoriet",
+    "Lobbyen",
+    "3D print",
+    //2
+    "Medialab",
+    //3
+    "3.1",
+    "3.2",
+    "3.4",
+    "3.5",
+    "3.6",
+    "3.7",
+    "3.8 Open Learning",
+    "3.9 Open Learning",
+    "3.10",
+    "3.11",
+  ];
+
+  const times = [
+    { startTime: "08:30", endTime: "09:30" },
+    { startTime: "09:30", endTime: "10:30" },
+    { startTime: "10:30", endTime: "11:30" },
+    { startTime: "11:30", endTime: "12:30" },
+    { startTime: "12:30", endTime: "13:30" },
+    { startTime: "13:30", endTime: "14:30" },
+    { startTime: "14:30", endTime: "15:30" },
+    { startTime: "15:30", endTime: "16:30" },
+  ];
 
   return (
     <div style={Container}>
@@ -55,8 +56,9 @@ function LokaleFilter() {
         setFilterDate={setFilterDate}
       />
       <LedigeLokalerList
-        lokaler={lokaler}
-        date={filterDate}
+        lokaler={lokaleListe}
+        times={times}
+        date={formattedDate}
         etage={etage}
       />
     </div>
