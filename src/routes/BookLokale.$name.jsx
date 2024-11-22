@@ -7,11 +7,10 @@ export const Route = createFileRoute('/BookLokale/$name')({
 })
 
 function RouteComponent() {
-  const {name} =Route.useParams()
   return (
     <div>
       <Steps/>
-      <BookLokale name={name} />
+      <BookLokale />
 
     </div>
   )

@@ -18,9 +18,9 @@ const LokaleOversigtStyle = {
  
 }
 
-function LedigeLokalerList({lokaler, etage}) {
+function LedigeLokalerList({lokaler, etage, date}) {
 
-   const filteredLokaler = lokaler.filter((lokale) => lokale.value.includes(etage));
+  const filteredLokaler = lokaler.filter((lokale) => lokale.value.includes(etage));
      
   return (
     <div style={Lokaler}>
@@ -29,7 +29,7 @@ function LedigeLokalerList({lokaler, etage}) {
         <div style={LokaleOversigtStyle}>
 
             {filteredLokaler.map((lokale) => (
-                <LedigeLokalerItem lokale={lokale} />
+                <LedigeLokalerItem lokale={lokale} date={date}/>
             ))}
 
         </div>

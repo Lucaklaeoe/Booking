@@ -17,7 +17,8 @@ const BookStyle = {
     marginBottom:"140px"
 }
 
-function Filter({etage, setEtage, filterDate, setFilterDate}) {    
+function Filter({etage, setEtage, filterDate, setFilterDate, setDeepSearch}) { 
+
   return (
     <div style={BookStyle}>
         <h1>Book Lokale</h1>
@@ -33,7 +34,7 @@ function Filter({etage, setEtage, filterDate, setFilterDate}) {
                 onChange={(value) => setFilterDate(value)} 
             />
             
-            <Button variant="filled" color="yellow" size="xl" radius="xs" style={{ color: "black" }}>SØG HER</Button>
+            <Button variant="filled" color="yellow" size="xl" radius="xs" onClick={() => setDeepSearch(true)} style={{ color: "black" }}>SØG HER</Button>
         </div>
     </div>
   )

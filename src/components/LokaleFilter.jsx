@@ -9,7 +9,7 @@ const Container ={
 
 function LokaleFilter() {
   const [etage, setEtage] = useState('');
-  const [filterDate, setFilterDate] = useState('');
+  const [filterDate, setFilterDate] = useState(new Date());
 
   //imported data from supabase
   const lokaler =[
@@ -45,7 +45,7 @@ function LokaleFilter() {
     { id: 30, name: '4.2', value: 'Etage 4' },
     { id: 31, name: '4.3', value: 'Etage 4' },
   ]
-     
+
   return (
     <div style={Container}>
       <Filter
@@ -56,6 +56,7 @@ function LokaleFilter() {
       />
       <LedigeLokalerList
         lokaler={lokaler}
+        date={filterDate}
         etage={etage}
       />
     </div>

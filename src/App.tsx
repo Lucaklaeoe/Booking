@@ -25,11 +25,14 @@ declare module "@tanstack/react-router" {
 export default function App() {
 
   const [userInfo, setUserInfo] = useState(undefined);
+  const [bookingInfo, setBookingInfo] = useState(undefined);
 
   const context = {
     supabase: getSupabaseClient(),
     userInfo: userInfo,
     setUserInfo,
+    bookingInfo,
+    setBookingInfo,
   };
 
   return (
