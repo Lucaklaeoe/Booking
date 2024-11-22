@@ -6,9 +6,15 @@ function Tider() {
      const handleClick = (index) => {
     setActiveButton(index);
   };
+   
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const openPopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
     
     return(
     <div className="tider">
+        <h2>Ledige tider</h2>
         <Button
           variant={activeButton === 0 ? 'filled' : 'filled'}
         color={activeButton === 0 ? 'cyan' : 'green'}
@@ -42,6 +48,7 @@ function Tider() {
         <Button  variant={activeButton === 7 ? 'filled' : 'filled'}
         color={activeButton === 7 ? 'cyan' : 'green'}
         onClick={() => handleClick(7)} >15.30-16.30</Button>
+
     </div>
 )
 }

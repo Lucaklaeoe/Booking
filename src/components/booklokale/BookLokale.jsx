@@ -11,9 +11,7 @@ function BookLokale({name}) {
     setIsPopupOpen(!isPopupOpen);
   };
   const TiderStyle = {
-    display: "flex",
-     justifySelf:"center",
-      justifyContent:"center",
+    display: "flex", 
       borderRadius: "9px",
       background: "#A5D8FF",
       width:"1164px"
@@ -27,7 +25,7 @@ function BookLokale({name}) {
               <h2>Grupperum - {name} </h2>
               <Tider />
         
-          <Button onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
+          <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl'  color="indigo">Button</Button>
           {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
         </div>
       </div>
