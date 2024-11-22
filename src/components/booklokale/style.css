@@ -1,10 +1,9 @@
 .time{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px;
     
-}
-.time button{
-    margin:30px;
 }
 .time .BookLokale{
     grid-row: 1/5;
