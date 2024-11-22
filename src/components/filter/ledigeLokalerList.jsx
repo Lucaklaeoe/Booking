@@ -22,6 +22,8 @@ function LedigeLokalerList({lokaler, etage, date}) {
 
   const filteredLokaler = lokaler.filter((lokale) => lokale.value.includes(etage));
      
+
+  //startTime={startTime} endTime={endTime}
   return (
     <div style={Lokaler}>
         <h1>Ledige lokaler idag </h1>
