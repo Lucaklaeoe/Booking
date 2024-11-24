@@ -36,7 +36,7 @@ function LedigeLokalerList({lokaler, times, date}) {
         }
     })
     const data = await response.json();
-
+    const lokaleAndTime = [];
     for (let i = 0; i < lokaler.length; i++) {
       for (let j = 0; j < times.length; j++) {
         for (let k = 0; k < data.length; k++) {
@@ -55,14 +55,14 @@ function LedigeLokalerList({lokaler, times, date}) {
         }
       }
     }
-
+    console.log('lokaleAndTime:', lokaleAndTime)
     setBookings(lokaleAndTime)
   }
 
   useEffect(() => {
     getBookingsfortoday()
   }, []);
-
+console.log(bookings)
   return (
     <div style={Lokaler}>
         <h1>Ledige lokaler idag </h1>

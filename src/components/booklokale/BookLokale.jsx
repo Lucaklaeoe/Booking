@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, CloseButton } from '@mantine/core';
+import { Button, useMantineTheme } from '@mantine/core';
 import Confirm from '../popup/confirm.jsx';
 import Tider from './tider.jsx';
 import { useRouteContext } from '@tanstack/react-router';
@@ -14,6 +14,8 @@ const TiderStyle = {
   padding: "0 26px"
 }
 function BookLokale({setStepper}) {
+
+  const theme = useMantineTheme();
   const iconStyle = {
     color:"red"
   }
@@ -71,23 +73,25 @@ function BookLokale({setStepper}) {
 
   return (
     <div>
-        <h1>Tider for den </h1>
+        <h1 style={{color: theme.colors.blue[8]}}> {context.bookingInfo.etage}. Etage og tider for den {context.bookingInfo.date.toLocaleDateString()} </h1>
 
         <div style={TiderStyle}>
 
-            <h2>Grupperum - </h2>
+            <h2 style={{color: theme.colors.blue[8]}}>Grupperum - {context.bookingInfo.lokaler} {} </h2>
             <Tider setStepper={setStepper}/>
 
             <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Button</Button>
             {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
+
         <div style={{display:"flex", alignItems:"center", height:"fit-content"}}>
-          <p>Hvad betyder farverne</p>
+
+          <p style={{color: theme.colors.blue[8],fontWeight:"bold"}}>Hvad betyder farverne ?</p>
+
           <button style={{borderColor:"red", marginLeft:"10px"}} onClick={openInfoPopup}>
           <IoInformation 
-          style={{
-            color:"red",
-             fontSize:"24px"}}  />
+          style={{color:"red", fontSize:"24px"}}  />
           </button>
+          
           {isInfoPopupOpen && <FarvePopup onClose={openInfoPopup}/>}  
          
         </div>
