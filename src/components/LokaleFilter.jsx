@@ -13,7 +13,7 @@ function LokaleFilter() {
 
   //chatgpt kode formater om til yyyy-mm-dd
   const formattedDate = filterDate.toISOString().split('T')[0];
-
+    
   const lokaleListe = [
     //1
     {lokale: "Audiotoriet", etage: "1"},

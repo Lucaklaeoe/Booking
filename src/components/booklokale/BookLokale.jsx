@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@mantine/core';
+import { Button, CloseButton } from '@mantine/core';
 import Confirm from '../popup/confirm.jsx';
 import Tider from './tider.jsx';
 import { useRouteContext } from '@tanstack/react-router';
+import { IoInformation } from "react-icons/io5";
+import FarvePopup from '../popup/farver.jsx';
 
 const TiderStyle = {
   display: "flex", 
@@ -11,13 +13,19 @@ const TiderStyle = {
   width:"1164px",
   padding: "0 26px"
 }
-
 function BookLokale({setStepper}) {
+  const iconStyle = {
+    color:"red"
+  }
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const openPopup = () => {
     setIsPopupOpen(!isPopupOpen);
   };
-
+  
+  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
+  const openInfoPopup = () => {
+    setIsInfoPopupOpen(!isInfoPopupOpen);
+  };
   const context = useRouteContext({ from: "/BookLokale" });
 
   const freeBookings = async () => {
@@ -54,6 +62,7 @@ function BookLokale({setStepper}) {
 
   useEffect(() => {
     freeBookings()
+
   }, []);
 
   if(context.bookingInfo.date){
@@ -71,9 +80,18 @@ function BookLokale({setStepper}) {
 
             <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Button</Button>
             {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
+        <div style={{display:"flex", alignItems:"center", height:"fit-content"}}>
+          <p>Hvad betyder farverne</p>
+          <button style={{borderColor:"red", marginLeft:"10px"}} onClick={openInfoPopup}>
+          <IoInformation 
+          style={{
+            color:"red",
+             fontSize:"24px"}}  />
+          </button>
+          {isInfoPopupOpen && <FarvePopup onClose={openInfoPopup}/>}  
+         
         </div>
-
-
+        </div>
     </div>
   );
 }
