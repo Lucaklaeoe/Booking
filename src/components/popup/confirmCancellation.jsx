@@ -35,14 +35,14 @@ function confirmCancellation() {
         <div style={centerBackground}>
             <div style={confirmStyle}>
                 
-                <h1 style={{color: "#2B8A3E"}}>Bookning bekræftet</h1>
+                <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
                     <Button 
                         type="submit" 
                         variant="filled" 
                         color="#F08C00" 
                         size="xl" 
                         radius="md" 
-                        style={buttonStyle}>Til forsiden
+                        style={buttonStyle}>Til bookningner
                     </Button>
             </div>
         </div>
