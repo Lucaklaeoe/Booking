@@ -15,7 +15,7 @@ const TiderStyle = {
   padding: "0 26px"
 }
 
-function BookLokaleItem({setStepper}) {
+function BookLokaleItem({setStepper, lokale, times, data}) {
     
     const context = useRouteContext({ from: "/BookLokale" });
     const theme = useMantineTheme();

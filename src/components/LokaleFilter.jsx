@@ -11,7 +11,7 @@ function LokaleFilter() {
   const [etage, setEtage] = useState('');
   const [filterDate, setFilterDate] = useState(new Date());
 
-  //chatgpt kode formater om til yyyy-mm-dd
+  //chatgpt linje formater om til yyyy-mm-dd format
   const formattedDate = filterDate.toISOString().split('T')[0];
     
   const lokaleListe = [

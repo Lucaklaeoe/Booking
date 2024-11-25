@@ -25,7 +25,12 @@ function Filter({etage, setEtage, filterDate, setFilterDate}) {
     const context = useRouteContext({ from: "/" });
 
     function handleButtonClick() {
-        context.setBookingInfo({etage: etage, date: filterDate});
+
+        //chatgpt kode formater om til yyyy-mm-dd
+        const formattedDate = filterDate.toISOString().split('T')[0];
+        //chat stop her
+        
+        context.setBookingInfo({etage: etage, date: formattedDate});
     }
 
     return (
