@@ -1,33 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Button, useMantineTheme } from '@mantine/core';
-import Confirm from '../popup/confirm.jsx';
-import Tider from './tider.jsx';
+import { useEffect } from 'react';
+import { useMantineTheme } from '@mantine/core';
 import { useRouteContext } from '@tanstack/react-router';
-import { IoInformation } from "react-icons/io5";
-import FarvePopup from './../popup/farver.jsx';
+import BookLokaleItem from './BookLokaleItem.jsx';
 
-const TiderStyle = {
-  display: "flex", 
-  borderRadius: "9px",
-  background: "#A5D8FF",
-  width:"1164px",
-  padding: "0 26px"
-}
 function BookLokale({setStepper}) {
 
   const theme = useMantineTheme();
-  const iconStyle = {
-    color:"red"
-  }
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const openPopup = () => {
-    setIsPopupOpen(!isPopupOpen);
-  };
-  
-  const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
-  const openInfoPopup = () => {
-    setIsInfoPopupOpen(!isInfoPopupOpen);
-  };
   const context = useRouteContext({ from: "/BookLokale" });
 
   const freeBookings = async () => {
@@ -73,30 +51,12 @@ function BookLokale({setStepper}) {
 
   return (
     <div>
-        <h1 style={{color: theme.colors.blue[8]}}> {context.bookingInfo.etage}. Etage og tider for den {context.bookingInfo.date.toLocaleDateString()} </h1>
+      <h1 style={{color: theme.colors.blue[8]}}> 
+        {context.bookingInfo.etage}. Etage og tider for den {context.bookingInfo.date.toLocaleDateString()} 
+      </h1>
 
-        <div style={TiderStyle}>
-
-            <h2 style={{color: theme.colors.blue[8]}}>Grupperum - {context.bookingInfo.lokaler} {} </h2>
-            <Tider setStepper={setStepper}/>
-
-            <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
-            {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
-
-        <div style={{display:"flex", alignItems:"center", height:"fit-content"}}>
-
-          <p style={{color: theme.colors.blue[8],fontWeight:"bold"}}>Hvad betyder farverne ?</p>
-
-          <button style={{borderColor:"red", marginLeft:"10px"}} onClick={openInfoPopup}>
-            
-          <IoInformation 
-          style={{color:"red", fontSize:"24px"}}  />
-          </button>
-          
-          {isInfoPopupOpen && <FarvePopup onClose={openInfoPopup}/>}  
-         
-        </div>
-        </div>
+      <BookLokaleItem setStepper={setStepper}/>
+      
     </div>
   );
 }
