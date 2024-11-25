@@ -7,3 +7,5 @@ function LokaleBilleder () {
         </div>
     )
 }
+
+export default LokaleBilleder
