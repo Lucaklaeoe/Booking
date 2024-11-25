@@ -1,7 +1,6 @@
 import Cancellation from "../popup/cancellation";
 import { useState } from "react";
 import ConfirmCancellation from "../popup/confirmCancellation";
-
 const itemStyle = {
     display: "flex",
     alignItems: "center",
@@ -23,11 +22,6 @@ const infoStyle = {
     display: "flex",
     alignItems: "center",
 }
-
-function removeBooking(id){
-    //function for remove booking 
-}
-
 function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
     const [popupState, setPopupState] = useState(null);
 
@@ -36,6 +30,9 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
     const openCancellationPopup = () => setPopupState("cancellation");
 
     const openConfirmCancellationPopup = () => setPopupState("confirm");
+
+    const closeConfirmCancellationPopup = () => setPopupState(null);
+
     
     return (
         <div style={itemStyle}>
@@ -55,11 +52,11 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
                 <p style={{backgroundColor: "#1C7ED6", padding: "10px", borderRadius: "6px"}}> {sluttid}</p>
             </div>
             
-            <div id={id} style={{ ...infoStyle, cursor: "pointer"}} onClick={() => removeBooking({id})}>
+            <div id={id} style={{ ...infoStyle, cursor: "pointer"}}>
                 <button onClick={openCancellationPopup} style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px", color: "white", border: "none"}}> Annuller booking</button>
             </div>
-            {popupState === "cancellation" && (<Cancellation onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid}/>)}
-            {popupState === "confirm" && <ConfirmCancellation />}
+            <Cancellation opened={popupState == "cancellation"} onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} id={id}/>
+            {popupState === "confirm" && <ConfirmCancellation onClose={closeConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} />}
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core';
+import { useState } from 'react';
 
 const centerBackground={
         display:"flex",
@@ -27,9 +28,9 @@ const centerBackground={
         marginTop: "29px",
         color: "black",
     }
-function confirmCancellation(starttid, sluttid) {
-
-    
+function confirmCancellation({onClose, starttid, sluttid}) {
+    // Props destructering.
+    // dvs. vi går fra et Object, vi får ind som parameter,
 
     return (
         <div style={centerBackground}>
@@ -38,6 +39,7 @@ function confirmCancellation(starttid, sluttid) {
                 <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
                 <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                     <Button 
+                        onClick={onClose}
                         type="submit" 
                         variant="filled" 
                         color="#F08C00" 
