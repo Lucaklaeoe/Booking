@@ -27,7 +27,7 @@ const centerBackground={
         marginTop: "29px",
         color: "black",
     }
-function confirmCancellation() {
+function confirmCancellation(starttid, sluttid) {
 
     
 
@@ -36,6 +36,7 @@ function confirmCancellation() {
             <div style={confirmStyle}>
                 
                 <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
+                <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                     <Button 
                         type="submit" 
                         variant="filled" 
