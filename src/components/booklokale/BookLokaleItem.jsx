@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Button, useMantineTheme } from '@mantine/core';
 import Confirm from '../popup/confirm.jsx';
 import Tider from './tider.jsx';
-import { useRouteContext } from '@tanstack/react-router';
 import { IoInformation } from "react-icons/io5";
 import FarvePopup from './../popup/farver.jsx';
 import LokaleBillede from './lokaleBillede.jsx';
@@ -17,9 +16,8 @@ const TiderStyle = {
   justifyContent: "space-between",
 }
 
-function BookLokaleItem({setStepper, lokale, times}) {
+function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBooking}) {
     
-    const context = useRouteContext({ from: "/BookLokale" });
     const theme = useMantineTheme();
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -34,6 +32,9 @@ function BookLokaleItem({setStepper, lokale, times}) {
 
   return (
     <div style={TiderStyle}>
+        {isPopupOpen && <Confirm onClose={openPopup} />}
+        {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
+
         <div style={{display:"flex", flexDirection:"column"}}>
             <h2 style={{color: theme.colors.blue[8], width:"250px"}}>
                 Grupperum - {lokale}
@@ -46,7 +47,7 @@ function BookLokaleItem({setStepper, lokale, times}) {
             <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", gap:"10%"}}>
                 {
                     times.map((time) => (
-                        <Tider start={time.startTime} end={time.endTime} status={time.status} setStepper={setStepper} />
+                        <Tider start={time.startTime} end={time.endTime} status={time.bookingStatus} setStepper={setStepper} setActiveBooking={setActiveBooking} activeBooking={activeBooking} lokale={lokale} />
                     ))
                 }
             </div>
@@ -63,10 +64,7 @@ function BookLokaleItem({setStepper, lokale, times}) {
             <button style={{borderColor:"red", marginLeft:"10px"}} onClick={changeInfoPopup}>
                 <IoInformation style={{color:"red", fontSize:"24px"}}  />
             </button>
-
-        </div>
-        {isPopupOpen && <Confirm onClose={openPopup} />}
-        {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>}  
+        </div> 
     </div>
   );
 }

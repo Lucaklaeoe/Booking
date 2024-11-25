@@ -5,13 +5,16 @@ const timeStyle = {
   padding: "10px 0",
 }
 
-function Tider({setStepper, start, end, status}) {
-  const handleClick = (index) => {
-    setStepper("2");
+function Tider({setStepper, start, end, status, lokale, setActiveBooking, activeBooking}) {
+  let color = "green";
+  const buttonKey = lokale + "-" + start;
+  const handleClick = () => {
+    if(color == "green"){
+      setStepper("2");
+      setActiveBooking(buttonKey);
+    }
   };
-
-
-  const color = "green";
+  
   if(status == "optaget"){
     color = "yellow";
   }
@@ -20,10 +23,10 @@ function Tider({setStepper, start, end, status}) {
   }
    
   return(
-    <div style={timeStyle}>
+    <div style={timeStyle} id={buttonKey}>
       <Button
         style={{width:"100%"}}
-        color={color}
+        color={activeBooking == buttonKey ? "cyan" : color}
         onClick={() => handleClick()}> {start} - {end}
       </Button>
     </div>

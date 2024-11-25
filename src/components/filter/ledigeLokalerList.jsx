@@ -26,7 +26,7 @@ function LedigeLokalerList({lokaler, times, date}) {
   const lokaleAndTime = [];
   const [bookings, setBookings] = useState([]);
 
-  const getBookingsfortoday = async () => {
+  async function getBookingsfortoday() {
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
     const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${date}`, {
         headers: {
