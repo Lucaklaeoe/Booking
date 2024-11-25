@@ -55,26 +55,26 @@ function FarvePopup({onClose}) {
                 <ul style={{listStyle:"none",padding:"0"}}>
 
                   <li style={{display:"flex"}}>
-                     <div style={{width:"20px", height:"20px", backgroundColor: theme.colors.green[8],margin:"0 10px"}}>
+                     <div style={{width:"20px", height:"20px", backgroundColor: theme.colors.green[8],margin:"0 10px", borderRadius:"50%"}}>
                     </div> 
                     Lokalet er frit
                     </li>
 
                   <li style={{display:"flex"}}>
-                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.yellow[8] ,margin:"0 10px"}}>
+                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.yellow[8] ,margin:"0 10px", borderRadius:"50%"}}>
                     </div>
                     Booket af en studerende
                     </li>
 
                   <li style={{display:"flex"}}>
-                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.red[8] ,margin:"0 10px"}}>
+                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.red[8] ,margin:"0 10px", borderRadius:"50%"}}>
                     </div>
 
                     Booket af en underviser
                   </li>
 
                   <li style={{display:"flex"}}>
-                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.cyan[8] ,margin:"0 10px"}}></div>
+                    <div style={{width:"20px", height:"20px",backgroundColor: theme.colors.cyan[8] ,margin:"0 10px", borderRadius:"50%"}}></div>
                     Din valgte booking
                   </li>
 

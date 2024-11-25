@@ -8,13 +8,9 @@ function BookLokale({setStepper}) {
   const theme = useMantineTheme();
   const context = useRouteContext({ from: "/BookLokale" });
   const [filteredLokale, setFilteredLokale] = useState([]);
-  const [importedData, setImportedData] = useState([]);
+  const [activeBooking, setActiveBooking] = useState(null);
 
-
-  const StatusOfBookings = async () => {
-        
-    console.log(context.bookingInfo)
-
+  async function StatusOfBookings() {    
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
     const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}`, {
         headers: {
@@ -23,7 +19,6 @@ function BookLokale({setStepper}) {
         }
     })
     const data = await response.json();
-    setImportedData(data)
     console.log("data",data)
 
     const lokaleListe = [
@@ -124,7 +119,7 @@ function BookLokale({setStepper}) {
 
       {
         filteredLokale.map((lokale) => (
-          <BookLokaleItem lokale={lokale.lokale} times={lokale.ableTimes} setStepper={setStepper} />
+          <BookLokaleItem lokale={lokale.lokale} times={lokale.ableTimes} setStepper={setStepper} activeBooking={activeBooking} setActiveBooking={setActiveBooking} />
         ))
       }
       
