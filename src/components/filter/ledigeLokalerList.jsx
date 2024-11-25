@@ -23,7 +23,6 @@ const LokaleOversigtStyle = {
 function LedigeLokalerList({lokaler, times, date}) {
 
   const context = useRouteContext({ from: "/" });
-
   const lokaleAndTime = [];
   const [bookings, setBookings] = useState([]);
 
@@ -36,25 +35,42 @@ function LedigeLokalerList({lokaler, times, date}) {
         }
     })
     const data = await response.json();
-    const lokaleAndTime = [];
-    for (let i = 0; i < lokaler.length; i++) {
-      for (let j = 0; j < times.length; j++) {
-        for (let k = 0; k < data.length; k++) {
-          if(lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3) && times[j].endTime == data[k].endTime.slice(0, -3)) {
-            
-          }
-          else{
-            lokaleAndTime.push({ 
-              lokale: lokaler[i].lokale, 
-              etage: lokaler[i].etage, 
-              startTime: times[j].startTime, 
-              endTime: times[j].endTime, 
-              date: date 
-            });
-          }
+
+    //hvis der ikke er noget i data basen
+    if (data.length === 0) {
+      for (let i = 0; i < lokaler.length; i++) {
+        for (let j = 0; j < times.length; j++) {
+          lokaleAndTime.push({ 
+            lokale: lokaler[i].lokale, 
+            etage: lokaler[i].etage, 
+            startTime: times[j].startTime, 
+            endTime: times[j].endTime, 
+            date: date 
+          });
         }
       }
     }
+    //hvis der er noget i databasen
+    else{
+      for (let i = 0; i < lokaler.length; i++) {
+        for (let j = 0; j < times.length; j++) {
+          for (let k = 0; k < data.length; k++) {
+            if(lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3) && times[j].endTime == data[k].endTime.slice(0, -3)) {
+              
+            }
+            else{
+              lokaleAndTime.push({ 
+                lokale: lokaler[i].lokale, 
+                etage: lokaler[i].etage, 
+                startTime: times[j].startTime, 
+                endTime: times[j].endTime, 
+                date: date 
+              });
+            }
+          }
+        }
+      }
+    }    
     console.log('lokaleAndTime:', lokaleAndTime)
     setBookings(lokaleAndTime)
   }
@@ -62,7 +78,7 @@ function LedigeLokalerList({lokaler, times, date}) {
   useEffect(() => {
     getBookingsfortoday()
   }, []);
-console.log(bookings)
+
   return (
     <div style={Lokaler}>
         <h1>Ledige lokaler idag </h1>

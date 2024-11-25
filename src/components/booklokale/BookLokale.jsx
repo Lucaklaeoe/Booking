@@ -4,7 +4,7 @@ import Confirm from '../popup/confirm.jsx';
 import Tider from './tider.jsx';
 import { useRouteContext } from '@tanstack/react-router';
 import { IoInformation } from "react-icons/io5";
-import FarvePopup from '../popup/farver.jsx';
+import FarvePopup from './../popup/farver.jsx';
 
 const TiderStyle = {
   display: "flex", 
@@ -88,6 +88,7 @@ function BookLokale({setStepper}) {
           <p style={{color: theme.colors.blue[8],fontWeight:"bold"}}>Hvad betyder farverne ?</p>
 
           <button style={{borderColor:"red", marginLeft:"10px"}} onClick={openInfoPopup}>
+            
           <IoInformation 
           style={{color:"red", fontSize:"24px"}}  />
           </button>
