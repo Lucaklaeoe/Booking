@@ -1,6 +1,5 @@
 import { Button, CloseButton, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
-
 import { IoInformation } from "react-icons/io5";
 import { useRouteContext } from '@tanstack/react-router';
 

@@ -80,7 +80,7 @@ function BookLokale({setStepper}) {
             <h2 style={{color: theme.colors.blue[8]}}>Grupperum - {context.bookingInfo.lokaler} {} </h2>
             <Tider setStepper={setStepper}/>
 
-            <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Button</Button>
+            <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
             {isPopupOpen && <Confirm onClose={openPopup} name={name} />}
 
         <div style={{display:"flex", alignItems:"center", height:"fit-content"}}>
