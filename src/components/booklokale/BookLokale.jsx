@@ -7,7 +7,7 @@ function BookLokale({setStepper}) {
 
   const theme = useMantineTheme();
   const context = useRouteContext({ from: "/BookLokale" });
-  const [filteredLokale, setFilteredLokale] = useState("");
+  const [filteredLokale, setFilteredLokale] = useState([]);
   const [importedData, setImportedData] = useState([]);
 
 
@@ -108,6 +108,8 @@ function BookLokale({setStepper}) {
     }
 
     setFilteredLokale(lokaleAndAbleTimes);
+    console.log("lokaleAndAbleTimes", lokaleAndAbleTimes)
+    console.log("filteredLokale", filteredLokale)
   }
 
   useEffect(() => {
@@ -115,14 +117,14 @@ function BookLokale({setStepper}) {
   }, []);
 
   return (
-    <div>
+    <div style={{display:"flex", flexDirection:"column", gap:"50px"}}>
       <h1 style={{color: theme.colors.blue[8]}}> 
         {context.bookingInfo.etage}. Etage og tider for den {context.bookingInfo.date} 
       </h1>
 
       {
         filteredLokale.map((lokale) => (
-          <BookLokaleItem lokale={lokale.lokale} times={lokale.ableTimes} data={importedData} setStepper={setStepper} />
+          <BookLokaleItem lokale={lokale.lokale} times={lokale.ableTimes} setStepper={setStepper} />
         ))
       }
       
