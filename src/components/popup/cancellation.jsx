@@ -1,4 +1,4 @@
-import { Button, Modal } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { useRouteContext } from "@tanstack/react-router";
 
 const centerBackground={
@@ -26,7 +26,8 @@ const centerBackground={
     const buttonStyle = {
         color: "white",
     }
-function cancellation({opened, onClose, onConfirm, starttid, sluttid, id}) {
+function cancellation({onClose, onConfirm, starttid, sluttid, id}) {
+
 
     const context = useRouteContext({ from: "/ownBooking" });
 
@@ -53,8 +54,8 @@ function cancellation({opened, onClose, onConfirm, starttid, sluttid, id}) {
     }
 
     return (
-        <Modal opened={opened} onClose={onClose} title="Authentication" style={cancellationStyle}>
-            <div>
+        <div style={centerBackground}>
+            <div style={cancellationStyle}>
                 <h1 style={{color: "#364FC7"}}>Vil du annullere din bookning?</h1>
                 <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                 <div style={{display:"flex", gap:"100px", marginTop:"30px"}}>
@@ -76,8 +77,7 @@ function cancellation({opened, onClose, onConfirm, starttid, sluttid, id}) {
                     </Button>
                 </div>
             </div>
-        </Modal>
-        
+        </div>
     )
 }
 
