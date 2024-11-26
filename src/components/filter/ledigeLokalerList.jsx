@@ -51,26 +51,30 @@ function LedigeLokalerList({lokaler, times, date}) {
       }
     }
     //hvis der er noget i databasen
-    else{
+    else {
       for (let i = 0; i < lokaler.length; i++) {
         for (let j = 0; j < times.length; j++) {
+          let found = false;
           for (let k = 0; k < data.length; k++) {
-            if(lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3) && times[j].endTime == data[k].endTime.slice(0, -3)) {
-              
+            if (lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3)) {
+              // Bryd ud af det inderste loop, hvis der er match
+              found = true;
+              break;
             }
-            else{
-              lokaleAndTime.push({ 
-                lokale: lokaler[i].lokale, 
-                etage: lokaler[i].etage, 
-                startTime: times[j].startTime, 
-                endTime: times[j].endTime, 
-                date: date 
-              });
-            }
+          }
+          //hvis der ikke er fundet noget, tilføj til lokaleAndTime
+          if (!found) {
+            lokaleAndTime.push({
+              lokale: lokaler[i].lokale,
+              etage: lokaler[i].etage,
+              startTime: times[j].startTime,
+              endTime: times[j].endTime,
+              date: date,
+            });
           }
         }
       }
-    }    
+    }   
     console.log('lokaleAndTime:', lokaleAndTime)
     setBookings(lokaleAndTime)
   }
