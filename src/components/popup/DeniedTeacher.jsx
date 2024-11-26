@@ -23,7 +23,6 @@ function deniedTeacher({name}) {
     }
 
     return (
-         <Modal opened={opened} onClose={onClose} title="Authentication">
             <div>
                 <div style={deniedStyle}>
                     <h1 style={{color: "#C92A2A"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/no.svg" alt="nægtet mærke" />Bookning bekræftet</h1>
@@ -43,7 +42,6 @@ function deniedTeacher({name}) {
                     </Link>
                 </div>
             </div>
-        </Modal>
     )
 }
 

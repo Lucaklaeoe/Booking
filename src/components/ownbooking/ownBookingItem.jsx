@@ -1,6 +1,7 @@
 import Cancellation from "../popup/cancellation";
 import { useState } from "react";
 import ConfirmCancellation from "../popup/confirmCancellation";
+
 const itemStyle = {
     display: "flex",
     alignItems: "center",

@@ -1,5 +1,4 @@
-import { Button } from '@mantine/core';
-import { useState } from 'react';
+import { Modal, Button } from '@mantine/core';
 
 const centerBackground={
         display:"flex",
@@ -28,15 +27,14 @@ const centerBackground={
         marginTop: "29px",
         color: "black",
     }
-function confirmCancellation({onClose, starttid, sluttid}) {
+function confirmCancellation({ onClose, starttid, sluttid}) {
     // Props destructering.
     // dvs. vi går fra et Object, vi får ind som parameter,
 
     return (
-         <Modal opened={opened} onClose={onClose} title="Authentication">
+        <Modal>
             <div style={centerBackground}>
                 <div style={confirmStyle}>
-                    
                     <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
                     <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                         <Button 
@@ -50,7 +48,7 @@ function confirmCancellation({onClose, starttid, sluttid}) {
                         </Button>
                 </div>
             </div>
-        </Modal>
+            </Modal>
     )
 }
 

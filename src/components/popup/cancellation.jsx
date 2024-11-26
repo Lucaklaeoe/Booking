@@ -1,39 +1,27 @@
 import { Button, Modal } from '@mantine/core';
 import { useRouteContext } from "@tanstack/react-router";
+import { useDisclosure } from '@mantine/hooks';
 
-const centerBackground={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        position: "fixed",
-        top: "0",
-        left: "0",
-        right: "0",
-        bottom: "0",
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
-    }
 
     const cancellationStyle={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        flexDirection:"column",
-        backgroundColor: "#FFF",
-        bordorRadius: "4px",
-        padding: "26px 55px",
-        width: "762px",
+       display: "flex",
+       Justify: "center",
+       alignItems: "center",
+       flexDirection: "column",
+       marginBottom: "30px",
     }
     const buttonStyle = {
         color: "white",
     }
 function cancellation({opened, onClose, onConfirm, starttid, sluttid, id}) {
 
+   
     const context = useRouteContext({ from: "/ownBooking" });
 
     function handleButton(){
         console.log (id)
         removeBooking(id)
-        onConfirm()
+
     }
 
     async function removeBooking(id) {
@@ -53,8 +41,8 @@ function cancellation({opened, onClose, onConfirm, starttid, sluttid, id}) {
     }
 
     return (
-        <Modal opened={opened} onClose={onClose} title="Authentication" style={cancellationStyle}>
-            <div>
+        <Modal opened={opened} onClose={onClose} centered size="xl">
+            <div style={cancellationStyle}>
                 <h1 style={{color: "#364FC7"}}>Vil du annullere din bookning?</h1>
                 <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                 <div style={{display:"flex", gap:"100px", marginTop:"30px"}}>
