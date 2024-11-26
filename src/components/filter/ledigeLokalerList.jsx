@@ -2,6 +2,8 @@ import LedigeLokalerItem from "./ledigeLokalerItem"
 import { useState, useEffect } from "react";
 import { useRouteContext } from "@tanstack/react-router";
 
+
+
 const Lokaler = {
   margin:"0 auto",
   borderRadius: "8px",
@@ -14,14 +16,14 @@ const Lokaler = {
 const LokaleOversigtStyle = {
   display:"flex",
   flexDirection:"column",
-
   height:"515px",
   overflowY:"scroll",
  
 }
 
+  
 function LedigeLokalerList({lokaler, times, date}) {
-
+ 
   const context = useRouteContext({ from: "/" });
   const lokaleAndTime = [];
   const [bookings, setBookings] = useState([]);

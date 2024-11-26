@@ -3,6 +3,7 @@ import { useMantineTheme } from '@mantine/core';
 import { useRouteContext } from '@tanstack/react-router';
 import BookLokaleItem from './BookLokaleItem.jsx';
 
+
 function BookLokale({setStepper}) {
 
   const theme = useMantineTheme();
