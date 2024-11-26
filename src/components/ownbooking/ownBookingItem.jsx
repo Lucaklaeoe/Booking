@@ -24,6 +24,7 @@ const infoStyle = {
     alignItems: "center",
 }
 function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
+
     const [popupState, setPopupState] = useState(null);
 
     const closePopup = () => setPopupState(null);
@@ -56,7 +57,7 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid}) {
             <div id={id} style={{ ...infoStyle, cursor: "pointer"}}>
                 <button onClick={openCancellationPopup} style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px", color: "white", border: "none"}}> Annuller booking</button>
             </div>
-            <Cancellation opened={popupState == "cancellation"} onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} id={id}/>
+             {popupState === "cancellation" && <Cancellation onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} id={id}/>}
             {popupState === "confirm" && <ConfirmCancellation onClose={closeConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} />}
         </div>
     )

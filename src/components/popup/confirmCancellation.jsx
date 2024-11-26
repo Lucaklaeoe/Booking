@@ -1,4 +1,4 @@
-import { Modal, Button } from '@mantine/core';
+import { Button } from '@mantine/core';
 
 const centerBackground={
         display:"flex",
@@ -32,7 +32,6 @@ function confirmCancellation({ onClose, starttid, sluttid}) {
     // dvs. vi går fra et Object, vi får ind som parameter,
 
     return (
-        <Modal>
             <div style={centerBackground}>
                 <div style={confirmStyle}>
                     <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
@@ -48,7 +47,6 @@ function confirmCancellation({ onClose, starttid, sluttid}) {
                         </Button>
                 </div>
             </div>
-            </Modal>
     )
 }
 
