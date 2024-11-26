@@ -30,7 +30,7 @@ function Filter({etage, setEtage, filterDate, setFilterDate}) {
         const formattedDate = filterDate.toISOString().split('T')[0];
         //chat stop her
         
-        context.setBookingInfo({etage: etage, date: formattedDate});
+        context.setBookingInfo({etage: etage, date: formattedDate, lokale: "", startTime: "", endTime: ""});
     }
 
     return (
