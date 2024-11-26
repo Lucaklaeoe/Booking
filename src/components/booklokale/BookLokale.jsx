@@ -11,6 +11,8 @@ function BookLokale({setStepper}) {
   const [filteredLokale, setFilteredLokale] = useState([]);
   const [activeBooking, setActiveBooking] = useState(null);
 
+
+
   async function StatusOfBookings() {    
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
     const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}`, {
@@ -75,30 +77,45 @@ function BookLokale({setStepper}) {
     }
     else{
       for (let i = 0; i < lokaleListe.length; i++) {
-        if(lokaleListe[i].etage == context.bookingInfo.etage){
+        if (lokaleListe[i].etage == context.bookingInfo.etage) {
+          ableTimes = [];
           for (let j = 0; j < times.length; j++) {
+            let found = false;
+            
             for (let k = 0; k < data.length; k++) {
-              if(times[j].startTime != data[k].startTime.slice(0, -3) || lokaleListe[i].lokale != data[k].roomNumber){
-                ableTimes.push({
-                  startTime: times[j].startTime,
-                  endTime: times[j].endTime,
-                  bookingStatus: "ledig"
-                })
+              if (times[j].startTime == data[k].startTime.slice(0, -3) && lokaleListe[i].lokale == data[k].roomNumber) {
+                if(data[k].isTeacher){
+                  ableTimes.push({
+                    startTime: times[j].startTime,
+                    endTime: times[j].endTime,
+                    bookingStatus: "teacher"
+                  });
+                }
+                else{
+                  ableTimes.push({
+                    startTime: times[j].startTime,
+                    endTime: times[j].endTime,
+                    bookingStatus: "optaget"
+                  });
+                }
+                //only one booking pr. time allowed break if found
+                found = true;
+                break; 
               }
-              else{
-                ableTimes.push({
-                  startTime: times[j].startTime,
-                  endTime: times[j].endTime,
-                  bookingStatus: "optaget"
-                })
-              }
+            }
+            // If no match found, it's available
+            if (!found) {
+              ableTimes.push({
+                startTime: times[j].startTime,
+                endTime: times[j].endTime,
+                bookingStatus: "ledig"
+              });
             }
           }
           lokaleAndAbleTimes.push({
             lokale: lokaleListe[i].lokale,
             ableTimes: ableTimes
-          })
-          ableTimes = [];
+          });
         }
       }
     }
@@ -110,6 +127,10 @@ function BookLokale({setStepper}) {
 
   useEffect(() => {
     StatusOfBookings()
+    if(context.bookingInfo.startTime != undefined || context.bookingInfo.startTime != null || context.bookingInfo.startTime != ""){
+      setActiveBooking(context.bookingInfo.lokale + "-" + context.bookingInfo.startTime);
+    }
+
   }, []);
 
   return (

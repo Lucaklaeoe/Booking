@@ -5,15 +5,19 @@ const timeStyle = {
   padding: "10px 0",
 }
 
-function Tider({setStepper, start, end, status, lokale, setActiveBooking, activeBooking}) {
+function Tider({setStepper, start, end, status, lokale, setActiveBooking, activeBooking, setSelectedInfo}) {
   let color = "green";
   const buttonKey = lokale + "-" + start;
+
   const handleClick = () => {
     if(color == "green"){
       setStepper("2");
       setActiveBooking(buttonKey);
-    }
-  };
+
+      setSelectedInfo({lokale: lokale, startTime: start, endTime: end})
+
+    };
+  }
   
   if(status == "optaget"){
     color = "yellow";

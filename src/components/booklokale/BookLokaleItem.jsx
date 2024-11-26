@@ -5,6 +5,7 @@ import Tider from './tider.jsx';
 import { IoInformation } from "react-icons/io5";
 import FarvePopup from './../popup/farver.jsx';
 import LokaleBillede from './lokaleBillede.jsx';
+import { useRouteContext } from '@tanstack/react-router';
 
 const TiderStyle = {
   display: "flex", 
@@ -19,11 +20,50 @@ const TiderStyle = {
 function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBooking}) {
     
     const theme = useMantineTheme();
+    const context = useRouteContext({ from: "/BookLokale" });
+
+    const [selectedInfo, setSelectedInfo] = useState({lokale: lokale, startTime: context.bookingInfo.startTime, endTime: context.bookingInfo.endTime});
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const openPopup = () => {
         setIsPopupOpen(!isPopupOpen);
     };
+
+    async function addBooking() {   
+        if(selectedInfo.startTime == undefined || selectedInfo.startTime == null || selectedInfo.startTime == ""){
+            alert("Vælg venligst en tid");
+            return;
+        }
+        
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
+        const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings`, {
+            method: "POST",
+            body: JSON.stringify(
+                {
+                    email: context.userInfo.user.email,
+                    user_id: context.userInfo.user.id,
+
+                    bookingDate: context.bookingInfo.date,
+                    floor: context.bookingInfo.etage,
+
+                    startTime: selectedInfo.startTime + ":00",
+                    endTime: selectedInfo.endTime + ":00",
+                    roomNumber: selectedInfo.lokale
+                }),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "apikey": supabaseKey,
+                "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+            }
+        })
+        const data = await response.json();
+        console.log(data)
+
+        //openPopup();
+        
+        
+    }
   
     const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
     const changeInfoPopup = () => {
@@ -47,14 +87,14 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", gap:"10%"}}>
                 {
                     times.map((time) => (
-                        <Tider start={time.startTime} end={time.endTime} status={time.bookingStatus} setStepper={setStepper} setActiveBooking={setActiveBooking} activeBooking={activeBooking} lokale={lokale} />
+                        <Tider start={time.startTime} end={time.endTime} status={time.bookingStatus} setStepper={setStepper} setActiveBooking={setActiveBooking} activeBooking={activeBooking} lokale={lokale} setSelectedInfo={setSelectedInfo} />
                     ))
                 }
             </div>
         </div>
 
         <div style={{alignSelf:"center"}}>
-            <Button style={{alignSelf:"center"}} onClick={openPopup} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
+            <Button style={{alignSelf:"center"}} onClick={addBooking} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
         </div>
 
 
