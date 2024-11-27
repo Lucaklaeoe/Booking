@@ -35,7 +35,9 @@ function confirm({name}) {
     return (
             <div style={centerBackground}>
                 <div style={confirmStyle}>
-                    <h1 style={{color: "#2B8A3E"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="" />Bookning bekræftet</h1>
+                    <h1 style={{color: "#2B8A3E"}}>
+                        <img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="" />Bookning bekræftet
+                    </h1>
                     <p>Lokale: <b>{name}</b></p>
                     <p>Dato: <b>08/12/2024</b></p>
                     <p>Tidspunkt: <b>13:00 - 15:00</b></p>
