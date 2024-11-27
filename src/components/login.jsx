@@ -62,7 +62,7 @@ function Login() {
             setpasswordError(error.message)
         }
 
-        //delete all old bookings from today
+        //delete all old bookings from (not including) today
         //chatgpt formating
         const today = new Date().toISOString().split('T')[0]
         //chatgpt stops here
