@@ -1,9 +1,6 @@
 import React from "react";
 import { useState } from "react";
-//Google Analytics
-import ReactGA from 'react-ga';
-  const TRACKING_ID = ""; // OUR_TRACKING_ID
-  ReactGA.initialize(TRACKING_ID);
+
 
 // Mantine Providers
 import { MantineProvider } from "@mantine/core";

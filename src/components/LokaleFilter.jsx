@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import LedigeLokalerList from "./../components/filter/ledigeLokalerList";
 import Filter from './../components/filter/filter';
+import LokaleKort from './Kort';
 
 const Container ={
   display:"flex",
@@ -59,6 +60,7 @@ function LokaleFilter() {
         date={formattedDate}
         etage={etage}
       />
+      <LokaleKort />
     </div>
   )
 }
