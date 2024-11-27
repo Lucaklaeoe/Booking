@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import './lokaleBilledeStyle.css'
 
 function LokaleBilleder({ lokale }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,11 +41,11 @@ function LokaleBilleder({ lokale }) {
                     alt={`Image of lokale ${lokale}`}
                 />
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
+            <div className="Chevron-Knap" style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
                 <button onClick={handlePrev} style={{background: "transparent", border: "none"}}>
                     <FaChevronLeft />
                 </button>
-                <button onClick={handleNext}style={{background:"transparent", border:"none"}}>
+                <button className="Chevron-Knap" onClick={handleNext}style={{background:"transparent", border:"none"}}>
                     <FaChevronRight />
                 </button>
             </div>
