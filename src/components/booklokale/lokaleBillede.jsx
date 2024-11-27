@@ -40,11 +40,11 @@ function LokaleBilleder({ lokale }) {
                     alt={`Image of lokale ${lokale}`}
                 />
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", width: "300px" }}>
-                <button onClick={handlePrev}>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
+                <button onClick={handlePrev} style={{background: "transparent", border: "none"}}>
                     <FaChevronLeft />
                 </button>
-                <button onClick={handleNext}>
+                <button onClick={handleNext}style={{background:"transparent", border:"none"}}>
                     <FaChevronRight />
                 </button>
             </div>

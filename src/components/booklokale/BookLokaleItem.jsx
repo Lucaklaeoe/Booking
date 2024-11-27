@@ -12,7 +12,7 @@ const TiderStyle = {
   borderRadius: "9px",
   background: "#A5D8FF",
   width:"1164px",
-  padding: "0 26px 26px 26px",
+  padding: "0 35px 26px 30px",
   position: "relative",
   justifyContent: "space-between",
 }
