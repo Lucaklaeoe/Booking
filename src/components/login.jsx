@@ -61,6 +61,20 @@ function Login() {
             setemailError(error.message)
             setpasswordError(error.message)
         }
+
+        //delete all old bookings from today
+        //chatgpt formating
+        const today = new Date().toISOString().split('T')[0]
+        //chatgpt stops here
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
+        const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${data.user.id}&bookingDate=lt.${today}`, {
+            method: "DELETE",
+            headers: {
+                "apikey": supabaseKey,
+                "Authorization": `Bearer ${data.session.access_token}`,                
+            }
+        })
+
         //when clicked go to home
         window.location.href = "/";
     }
