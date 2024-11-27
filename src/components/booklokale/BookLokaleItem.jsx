@@ -18,7 +18,9 @@ const TiderStyle = {
 }
 
 function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBooking}) {
-    
+
+  
+
     const theme = useMantineTheme();
     const context = useRouteContext({ from: "/BookLokale" });
 
@@ -34,7 +36,9 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             alert("Vælg venligst en tid");
             return;
         }
-        
+
+        openPopup();
+
         const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings`, {
             method: "POST",
@@ -60,8 +64,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
         const data = await response.json();
         console.log(data)
 
-        //openPopup();
-        
+     
         
     }
   
@@ -72,7 +75,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
 
   return (
     <div style={TiderStyle}>
-        {isPopupOpen && <Confirm onClose={openPopup} />}
+       {isPopupOpen && <Confirm onClose={openPopup} />}
         {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
 
         <div style={{display:"flex", flexDirection:"column"}}>
@@ -95,6 +98,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
 
         <div style={{alignSelf:"center"}}>
             <Button style={{alignSelf:"center"}} onClick={addBooking} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
+            
         </div>
 
 
