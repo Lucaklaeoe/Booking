@@ -46,6 +46,7 @@ function Filter({etage, setEtage, filterDate, setFilterDate}) {
                 <DateInput valueFormat="YYYY MMM DD" placeholder="Dato" 
                     value={filterDate} 
                     onChange={(value) => setFilterDate(value)} 
+                    minDate={new Date()}
                 />
                 
                 {etage ? 
