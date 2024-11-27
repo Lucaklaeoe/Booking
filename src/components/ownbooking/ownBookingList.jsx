@@ -62,7 +62,7 @@ function OwnBookingList() {
             </div>
             <div style={ownBookingListStyle}>
                 {userBookingData.map((booking) => (
-                    <OwnBookingItem id={booking.id} dato={booking.bookingDate} lokale={booking.roomNumber} starttid={booking.startTime} sluttid={booking.endTime} />
+                    <OwnBookingItem id={booking.id} dato={booking.bookingDate} lokale={booking.roomNumber} starttid={booking.startTime} sluttid={booking.endTime} setUserBookingData={setUserBookingData} />
                 ))}
             </div>
         </div>
