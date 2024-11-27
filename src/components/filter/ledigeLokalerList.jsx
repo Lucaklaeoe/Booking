@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useRouteContext } from "@tanstack/react-router";
 
 
-
 const Lokaler = {
   margin:"0 auto",
   borderRadius: "8px",
@@ -99,7 +98,6 @@ function LedigeLokalerList({lokaler, times, date}) {
             <LedigeLokalerItem lokale={data.lokale} etage={data.etage} startTime={data.startTime} endTime={data.endTime} date={data.date}/>
           ))
         }
-
         </div>
     </div>
   )
