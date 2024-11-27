@@ -1,4 +1,10 @@
-.Chevron-knap:hover{
-    background-color: grey;
-    opacity: 50%;
+.Chevron-Knap{
+    border: none;
+    background: transparent;
+}
+.Chevron-Knap:hover{
+    
+    background-color:#8080803b ;
+  
+    
 }

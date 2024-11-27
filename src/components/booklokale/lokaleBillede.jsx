@@ -41,11 +41,11 @@ function LokaleBilleder({ lokale }) {
                     alt={`Image of lokale ${lokale}`}
                 />
             </div>
-            <div className="Chevron-Knap" style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
-                <button onClick={handlePrev} style={{background: "transparent", border: "none"}}>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
+                <button  className="Chevron-Knap" onClick={handlePrev}>
                     <FaChevronLeft />
                 </button>
-                <button className="Chevron-Knap" onClick={handleNext}style={{background:"transparent", border:"none"}}>
+                <button className="Chevron-Knap" onClick={handleNext}>
                     <FaChevronRight />
                 </button>
             </div>
