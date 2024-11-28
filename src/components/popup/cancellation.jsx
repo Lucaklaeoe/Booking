@@ -33,29 +33,28 @@ function cancellation({onClose, onConfirm, starttid, sluttid, id}) {
     const context = useRouteContext({ from: "/ownBooking" });
 
     function handleButton(){
-        console.log (id)
         removeBooking(id)
         onConfirm()
     }
 
     async function removeBooking(id) {
-        console.log (id)
+        console.log ("halløjer")
         const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?id=eq.${id}`, {
             method: "DELETE",
             headers: {
             "apikey": supabaseKey,
-            "Authorization": `Bearer ${context.userInfo.session.access_token}`,  
+            "Authorization": `Bearer ${context.userInfo.session.access_token}`, 
         }
     })
-    
+
     const data=await response.json()
     console.log (data)
     if (response.ok) {
         setUserBookingData((prevBookings) =>
             prevBookings.filter((booking) => booking.id !== id)
         );
-        onConfirm();
+        console.log("Halløjer 2")
       };
     }
     
