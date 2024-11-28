@@ -32,7 +32,7 @@ return (
   </g>
   <g id="Media">
     <rect class="cls-5" x="109.37" y="183.55" width="63.05" height="139.82"/>
-    <text class="cls-7" transform="translate(111.35 259.9)"><tspan x="0" y="0">Medialab</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Medialab clicked')} class="cls-7" transform="translate(111.35 259.9)"><tspan x="0" y="0">Medialab</tspan></text>
   </g>
   <g id="Lokale">
     <polygon class="cls-5" points="506.41 37.46 571.44 37.46 571.44 133.36 513.49 133.36 513.49 128.88 506.41 128.88 506.41 37.46"/>

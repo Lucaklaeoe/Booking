@@ -31,7 +31,8 @@ function LokaleKort (){
     }
     const Selector = {
         position:"relative",
-        right:"120px"
+        right:"120px",
+        fontSize:"24px",
     }
     const Titel = {
         position:"relative",

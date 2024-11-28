@@ -22,15 +22,15 @@ return(
   <g id="Lokaler">
     <g id="_4.1" data-name="4.1">
       <rect class="cls-4" x="99.21" y="101.09" width="211.09" height="123.09"/>
-      <text class="cls-6" transform="translate(207.21 166.17)"><tspan x="0" y="0">4.1</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 4.1 clicked')} class="cls-6" transform="translate(207.21 166.17)"><tspan x="0" y="0">4.1</tspan></text>
     </g>
     <g id="_4.2" data-name="4.2">
       <rect class="cls-4" x="310.31" y="100.79" width="150.87" height="123.09"/>
-      <text class="cls-6" transform="translate(376.13 166.17)"><tspan x="0" y="0">4.2</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 4.2 clicked')} class="cls-6" transform="translate(376.13 166.17)"><tspan x="0" y="0">4.2</tspan></text>
     </g>
     <g id="_4.3" data-name="4.3">
       <polygon class="cls-4" points="415.89 362.8 488.39 362.8 488.39 342.29 588.77 342.29 588.77 224.18 658.48 224.18 658.48 488.28 607.1 488.28 607.1 513.37 415.89 513.37 415.89 362.8"/>
-      <text class="cls-6" transform="translate(532.81 418.24)"><tspan x="0" y="0">4.3</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 4.3 clicked')} class="cls-6" transform="translate(532.81 418.24)"><tspan x="0" y="0">4.3</tspan></text>
     </g>
   </g>
 </svg>

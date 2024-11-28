@@ -1,5 +1,6 @@
 import './FoersteEtageStyle.css';
 function FørsteEtage() {
+  
     return (
         <div>
            
@@ -11,7 +12,7 @@ function FørsteEtage() {
     <g id="Base">
       <rect class="cls-1" x="542.37" y="469.46" width="51.59" height="68.22"/>
       <polygon class="cls-1" points="77.7 230.75 77.7 319.98 216.52 319.98 216.52 396.46 355.44 396.46 355.44 472.54 472.16 472.54 472.16 537.67 543.16 537.67 543.16 469.46 660.87 469.46 660.87 37.46 472.06 37.46 472.06 125.29 355.54 125.29 355.54 167.56 216.92 167.56 216.92 231.35 77.7 230.75"/>
-      <path class="cls-5" d="m561.86,514.46h3.78v-5.35h1.26v-3.46c0-.69-.25-1.29-.74-1.78s-1.09-.74-1.78-.74h-1.26c-.69,0-1.29.25-1.78.74-.49.49-.74,1.09-.74,1.78v3.46h1.26v5.35Zm1.89-12.41c.48,0,.9-.17,1.24-.52s.52-.76.52-1.24-.17-.9-.52-1.24-.76-.52-1.24-.52-.9.17-1.24.52-.52.76-.52,1.24.17.9.52,1.24.76.52,1.24.52Zm5.51,2.96h6.3l-3.15-5.04-3.15,5.04Zm3.15,8.19l3.15-5.04h-6.3l3.15,5.04Zm-13.7,4.72c-.5,0-.94-.19-1.32-.57s-.57-.82-.57-1.32v-18.9c0-.48.19-.92.57-1.31s.82-.58,1.32-.58h18.9c.48,0,.92.19,1.31.58s.58.82.58,1.31v18.9c0,.5-.19.94-.58,1.32s-.82.57-1.31.57h-18.9Zm0-1.89h18.9v-18.9h-18.9v18.9Zm0,0v-18.9,18.9Z"/>
+      <path class="icon" d="m561.86,514.46h3.78v-5.35h1.26v-3.46c0-.69-.25-1.29-.74-1.78s-1.09-.74-1.78-.74h-1.26c-.69,0-1.29.25-1.78.74-.49.49-.74,1.09-.74,1.78v3.46h1.26v5.35Zm1.89-12.41c.48,0,.9-.17,1.24-.52s.52-.76.52-1.24-.17-.9-.52-1.24-.76-.52-1.24-.52-.9.17-1.24.52-.52.76-.52,1.24.17.9.52,1.24.76.52,1.24.52Zm5.51,2.96h6.3l-3.15-5.04-3.15,5.04Zm3.15,8.19l3.15-5.04h-6.3l3.15,5.04Zm-13.7,4.72c-.5,0-.94-.19-1.32-.57s-.57-.82-.57-1.32v-18.9c0-.48.19-.92.57-1.31s.82-.58,1.32-.58h18.9c.48,0,.92.19,1.31.58s.58.82.58,1.31v18.9c0,.5-.19.94-.58,1.32s-.82.57-1.31.57h-18.9Zm0-1.89h18.9v-18.9h-18.9v18.9Zm0,0v-18.9,18.9Z"/>
     </g>
     <g id="Layer_4" data-name="Layer 4">
       <polygon class="cls-1" points="325.87 233.94 423.06 233.94 423.06 198.71 436.61 198.71 436.61 158.65 473.25 158.65 473.25 125.29 355.54 125.29 355.54 167.56 325.87 167.56 325.87 233.94"/>
@@ -28,15 +29,17 @@ function FørsteEtage() {
     <g id="Layer_5" data-name="Layer 5">
       <polygon class="cls-2" points="638.76 425.54 532.01 425.94 532.01 317.39 597.54 317.39 597.54 356.53 638.76 356.53 638.76 425.54"/>
       <text class="cls-6" transform="translate(621.44 337.41)"><tspan x="0" y="0">Fog</tspan></text>
-      <text class="cls-6" transform="translate(558.1 385.51)"><tspan x="0" y="0">Makerlab</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Makerlab clicked')} class="cls-6" transform="translate(558.1 385.51)"><tspan x="0" y="0">Makerlab</tspan></text>
     </g>
   </g>
   <g id="Lokaler">
+    
     <rect class="cls-4" x="473.22" y="173.82" width="187.62" height="144"/>
+
     <polygon class="cls-4" points="535.69 99.6 535.69 114.54 521.95 114.54 521.95 173.39 473.25 173.39 473.25 37.46 535.69 37.46 535.69 99.6"/>
     <g id="Layer_6" data-name="Layer 6">
-      <text class="cls-6" transform="translate(533.17 249.65)"><tspan x="0" y="0">Audiotorie</tspan></text>
-      <text class="cls-6" transform="translate(487 81.97)"><tspan x="0" y="0">Lobby</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Audiotorie clicked')} class="cls-6" transform="translate(533.17 249.65)"><tspan x="0" y="0">Audiotorie</tspan></text>
+      <text style={{cursor: 'pointer'}} onClick={() => console.log('Lobby clicked')} class="cls-6" transform="translate(487 81.97)"><tspan x="0" y="0">Lobby</tspan></text>
     </g>
   </g>
 </svg>

@@ -40,15 +40,15 @@ return (
     <rect class="cls-4" x="593.7" y="293.07" width="55.37" height="77.28"/>
     <rect class="cls-4" x="593.49" y="224.22" width="55.37" height="68.91"/>
     <rect class="cls-4" x="484.76" y="227.68" width="61.84" height="70.17"/>
-    <text class="cls-6" transform="translate(609.1 335.54)"><tspan x="0" y="0">3.10</tspan></text>
-    <text class="cls-6" transform="translate(625.38 431.22)"><tspan x="0" y="0">3.9</tspan></text>
-    <text class="cls-6" transform="translate(503.39 266.59)"><tspan x="0" y="0">3.13</tspan></text>
-    <text class="cls-6" transform="translate(503.47 413.41)"><tspan x="0" y="0">3.3</tspan></text>
-    <text class="cls-6" transform="translate(563.37 501.36)"><tspan x="0" y="0">3.6</tspan></text>
-    <text class="cls-6" transform="translate(536.11 499.58)"><tspan x="0" y="0">3.5</tspan></text>
-    <text class="cls-6" transform="translate(518.18 540.76)"><tspan x="0" y="0">3.4</tspan></text>
-    <text class="cls-6" transform="translate(599.37 540.76)"><tspan x="0" y="0">3.7</tspan></text>
-    <text class="cls-6" transform="translate(609.94 262.51)"><tspan x="0" y="0">3.11</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.10 clicked')} class="cls-6" transform="translate(609.1 335.54)"><tspan x="0" y="0">3.10</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.9 clicked')} class="cls-6" transform="translate(625.38 431.22)"><tspan x="0" y="0">3.9</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.13 clicked')}class="cls-6" transform="translate(503.39 266.59)"><tspan x="0" y="0">3.13</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.3 clicked')} class="cls-6" transform="translate(503.47 413.41)"><tspan x="0" y="0">3.3</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.6 clicked')} class="cls-6" transform="translate(563.37 501.36)"><tspan x="0" y="0">3.6</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.5 clicked')} class="cls-6" transform="translate(536.11 499.58)"><tspan x="0" y="0">3.5</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.4 clicked')} class="cls-6" transform="translate(518.18 540.76)"><tspan x="0" y="0">3.4</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.7 clicked')}class="cls-6" transform="translate(599.37 540.76)"><tspan x="0" y="0">3.7</tspan></text>
+    <text style={{cursor: 'pointer'}} onClick={() => console.log('Lokale 3.11 clicked')} class="cls-6" transform="translate(609.94 262.51)"><tspan x="0" y="0">3.11</tspan></text>
   </g>
 </svg>
     </div>
