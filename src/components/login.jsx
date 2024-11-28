@@ -28,6 +28,7 @@ function Login() {
     const [password, setPassword] = useState('')
     const [emailError, setemailError] = useState('')
     const [passwordError, setpasswordError] = useState('')
+    const [goToIndex, setGoToIndex] = useState(false);
 
     async function signUpNewUser() {
         //console.log("sending to supabase", email, password);
@@ -77,7 +78,7 @@ function Login() {
         })
 
         //when clicked go to home
-        window.location.href = "/";
+        setGoToIndex(true);
     }
       
     //on logind click
@@ -110,6 +111,7 @@ function Login() {
 
     return (
         <div>
+            {goToIndex && <Navigate to="/"></Navigate>}
             <h1 style={{color: "#364FC7"}}>Login</h1>
             <form>
                 <TextInput

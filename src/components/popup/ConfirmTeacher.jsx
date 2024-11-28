@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 
-function confirmTeacher({name}) {
+function confirmTeacher({lokale, starttid, sluttid, etage, date}) {
 
     const confirmStyle={
         display:"flex",
@@ -15,6 +15,7 @@ function confirmTeacher({name}) {
         position: "fixed",
         top: "10%",
         left: "23%",
+        zIndex: "3"
     }
     const buttonStyle = {
         backgroundColor: "#F59F00",
@@ -26,10 +27,10 @@ function confirmTeacher({name}) {
             <div>
                 <div style={confirmStyle}>
                     <h1 style={{color: "#2B8A3E"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="godtkent mærke" />Bookning bekræftet</h1>
-                    <p>Lokale: <b>{name}</b></p>
-                    <p>Dato: <b>08/12/2024</b> </p>
-                    <p>Tidspunkt: <b>13:00 - 15:00</b></p>
-                    <p>Din booking har nu overskrevet en andens, og der bliver sendt en besked til vedkommende. </p>
+                    <p>Lokale: <b>{lokale}</b></p>
+                    <p>Dato: <b>{date}</b></p>
+                    <p>Tidspunkt: <b>{starttid} - {sluttid}</b></p>
+                    <p>Din booking har nu overskrevet en andens, og der bliver sendt en besked til vedkommende.</p>
                     <Link to={"ownBooking"}>
                         <Button 
                             type="submit" 
