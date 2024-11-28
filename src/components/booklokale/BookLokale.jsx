@@ -29,6 +29,7 @@ function BookLokale({setStepper}) {
       {lokale: "3D print", etage: "1"},
       //2
       {lokale: "Medialab", etage: "2"},
+      {lokale: "2.21", etage: "2"},
       //3
       {lokale: "3.1", etage: "3"},
       {lokale: "3.2", etage: "3"},
@@ -117,7 +118,7 @@ function BookLokale({setStepper}) {
         }
       }
     }
-
+    console.log(lokaleAndAbleTimes)
     setFilteredLokale(lokaleAndAbleTimes);
   }
 
