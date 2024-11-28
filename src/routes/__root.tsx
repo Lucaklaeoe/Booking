@@ -38,7 +38,7 @@ function RootRouteWithLayout() {
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
       <div style={headerStyle}>
         <Link to="/">
-          <img style={{height: "50px"}} src="cph-booking.png" alt="" />
+          <img style={{height: "50px"}} src="img/cph-booking.png" alt="" />
         </Link>
         <Link to="/ownBooking">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
@@ -49,7 +49,7 @@ function RootRouteWithLayout() {
       <Outlet />
 
       <div style={footerStyle}>
-        <img style={{height: "50px"}} src="cph-booking.png" alt="" />
+        <img style={{height: "50px"}} src="img/cph-booking.png" alt="" />
       </div>
     </div>
   );
