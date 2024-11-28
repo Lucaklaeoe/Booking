@@ -8,13 +8,13 @@ function LokaleBilleder({ lokale }) {
 
     const lokaleImages = {
         "3.9 Open Learning": [
-            "lokale3-9.jpg",
-            "lokale3-9-2.jpg",
-            "lokale3-9-3.jpg",
+            "img/lokale3-9.jpg",
+            "img/lokale3-9-2.jpg",
+            "img/lokale3-9-3.jpg",
         ],
         "3.2": [
-            "lokale3-2.jpg",
-            "lokale3-2-2.jpg",
+            "img/lokale3-2.jpg",
+            "img/lokale3-2-2.jpg",
         ],
     };
 
