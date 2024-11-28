@@ -1,4 +1,5 @@
 import { Button } from '@mantine/core';
+import { useRouteContext } from '@tanstack/react-router';
 
 const timeStyle = {
   width: "45%",
@@ -6,17 +7,25 @@ const timeStyle = {
 }
 
 function Tider({setStepper, start, end, status, lokale, setActiveBooking, activeBooking, setSelectedInfo}) {
+  const context = useRouteContext({ from: "/BookLokale" });
   let color = "green";
   const buttonKey = lokale + "-" + start;
 
   const handleClick = () => {
+
     if(color == "green"){
       setStepper("2");
       setActiveBooking(buttonKey);
 
-      setSelectedInfo({lokale: lokale, startTime: start, endTime: end})
+      setSelectedInfo({lokale: lokale, startTime: start, endTime: end, isTeacher: false})
 
-    };
+    }
+    else if(color == "yellow" && context.userInfo.userdata.isTeacher){
+      setStepper("2");
+      setActiveBooking(buttonKey);
+
+      setSelectedInfo({lokale: lokale, startTime: start, endTime: end, isTeacher: true})
+    }
   }
   
   if(status == "optaget"){

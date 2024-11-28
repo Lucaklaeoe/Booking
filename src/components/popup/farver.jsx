@@ -1,15 +1,9 @@
 import { CloseButton, useMantineTheme } from '@mantine/core';
-import { useState } from 'react';
 import { IoInformation } from "react-icons/io5";
-import { useRouteContext } from '@tanstack/react-router';
-
 
 function FarvePopup({onClose}) {
   const theme = useMantineTheme();
  
-  const context = useRouteContext({ from: "/BookLokale" });
-
-
     const centerBackground={
         display:"flex",
         justifyContent:"center",
@@ -24,7 +18,6 @@ function FarvePopup({onClose}) {
     }
 
     const confirmStyle={
-
         display:"flex",
         flexDirection:"column",
         backgroundColor: "#FFF",
@@ -34,7 +27,6 @@ function FarvePopup({onClose}) {
     }
     const buttonStyle = {
     borderColor:"red",
-    
      width:"fit-content",
      justifySelf:"right",
     }

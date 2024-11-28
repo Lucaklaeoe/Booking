@@ -6,6 +6,7 @@ import { IoInformation } from "react-icons/io5";
 import FarvePopup from './../popup/farver.jsx';
 import LokaleBillede from './lokaleBillede.jsx';
 import { useRouteContext } from '@tanstack/react-router';
+import { ConfirmTeacher } from '../popup/ConfirmTeacher.jsx';
 
 const TiderStyle = {
   display: "flex", 
@@ -27,8 +28,12 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
     const [selectedInfo, setSelectedInfo] = useState({lokale: lokale, startTime: context.bookingInfo.startTime, endTime: context.bookingInfo.endTime});
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [isPopupOpenTeacher, setIsPopupOpenTeacher] = useState(false);
     const openPopup = () => {
         setIsPopupOpen(!isPopupOpen);
+    };
+    const openPopupTeacher = () => {
+        setIsPopupOpenTeacher(!isPopupOpenTeacher);
     };
 
     async function addBooking() {   
@@ -37,9 +42,29 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             return;
         }
 
-        openPopup();
-
         const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
+        if(selectedInfo.isTeacher){
+            const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?roomNumber=eq.${selectedInfo.lokale}&bookingDate=eq.${context.bookingInfo.date}&startTime=eq.${selectedInfo.startTime}:00`, {
+                method: "PATCH",
+                body: JSON.stringify({
+                    email: context.userInfo.user.email,
+                    user_id: context.userInfo.user.id,
+                    isTeacher: true
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "apikey": supabaseKey,
+                    "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+                }
+            })
+            const data = await response.json();
+            console.log(data)
+            if(response.ok){
+                openPopupTeacher();
+                return;
+            }
+        }
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings`, {
             method: "POST",
             body: JSON.stringify(
@@ -52,7 +77,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
 
                     startTime: selectedInfo.startTime + ":00",
                     endTime: selectedInfo.endTime + ":00",
-                    roomNumber: selectedInfo.lokale
+                    roomNumber: selectedInfo.lokale,
+                    isTeacher: context.userInfo.userdata.isTeacher,
                 }),
             headers: {
                 "Content-Type": "application/json",
@@ -63,8 +89,9 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
         })
         const data = await response.json();
         console.log(data)
-
-     
+        if(response.ok){
+            openPopup();
+        }
         
     }
   
@@ -75,7 +102,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
 
   return (
     <div style={TiderStyle}>
-       {isPopupOpen && <Confirm onClose={openPopup} />}
+        {isPopupOpen && <Confirm onClose={openPopup} />}
+        {isPopupOpenTeacher && <ConfirmTeacher onClose={openPopupTeacher} />}
         {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
 
         <div style={{display:"flex", flexDirection:"column"}}>
