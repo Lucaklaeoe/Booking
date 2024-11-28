@@ -43,23 +43,18 @@ function cancellation({onClose, onConfirm, starttid, sluttid, id, setUserBooking
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?id=eq.${id}`, {
             method: "DELETE",
             headers: {
-            "apikey": supabaseKey,
-            "Authorization": `Bearer ${context.userInfo.session.access_token}`, 
-            "Content-Type": "application/json",
-            "Prefer": "return=representation"
-        }
-     })
-
-        const data=await response.json()
-        console.log (response)
-
+                "apikey": supabaseKey,
+                "Authorization": `Bearer ${context.userInfo.session.access_token}`, 
+                "Content-Type": "application/json",
+                "Prefer": "return=representation"
+            }
+        })
         if (response.ok) {
             console.log("booking deleted")
             onConfirm()
         }
     }
     
-
     return (
         <div style={centerBackground}>
             <div style={cancellationStyle}>
