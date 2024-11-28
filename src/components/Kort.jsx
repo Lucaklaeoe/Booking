@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {Select} from "@mantine/core";
+import { Button } from "@mantine/core";
+
 
 function LokaleKort (){
     
@@ -17,51 +18,23 @@ function LokaleKort (){
         overflow:"hidden"
     }
 
-    const Audiotorie = {
-             
-        border:"solid black",
-        width:"224px",
-        height:"174px",
-        position:" relative",
-        bottom:"506px",
-        left:"560px",
-        background:"transparent",
-        cursor:"pointer",
-    }
-
-    const Lobby = {
-        border:"none",
-        width:"78px",
-        height:"166px",
-        position:" relative",
-        bottom:"679px",
-        left:"336px",
-        background:"transparent",
-        cursor:"pointer",
-    }
-    const MediaLab = {
-        border:"none",
-        width:"78px",
-        height:"166px",
-        position:" relative",
-        bottom:"679px",
-        left:"336px",
-        background:"transparent",
-        cursor:"pointer",
-    }
-
     return (
         <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
         <div style={KortStyle} >
-        {selectedFloor === 'FørsteEtage' && <div id="FørsteEtage">
+        {selectedFloor === 'FørsteEtage' && 
+        <div id="FørsteEtage">
             <img src="Kort/1etageskole-01.svg" alt="" />
-            <button style={Audiotorie}></button>
-            <button style={Lobby}></button></div>}
+            
+            </div>}
         {selectedFloor === 'AndenEtage' && <div id="AndenEtage">
-            <img src="Kort/2salskole-01.svg" alt="" /></div>}
-            <button style={MediaLab}></button>
+            <img src="Kort/2salskole-01.svg" alt="" />
+            
+            </div>}
         {selectedFloor === 'TredjeEtage' && <div id="TredjeEtage">  
-            <img src="Kort/3etagekort-01-01.svg" alt="" /></div>}
+            <img src="Kort/3etagekort-01-01.svg" alt="" />
+            
+            </div>}
+
         {selectedFloor === 'FjerdeEtage' && <div id="FjerdeEtage">
             <img src="Kort/4etagekort-01.svg" alt="" /></div>}
         </div>
