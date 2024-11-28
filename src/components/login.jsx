@@ -79,7 +79,6 @@ function Login() {
 
         //when clicked go to home
         setGoToIndex(true);
-        alert("hi")
     }
       
     //on logind click
