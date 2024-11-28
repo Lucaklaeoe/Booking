@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Button } from "@mantine/core";
-
+import FørsteEtage from "./Etager/FoersteEtage";
+import AndenEtage from "./Etager/AndenEtage";
+import TredjeEtage from "./Etager/TredjeEtage";
+import FjerdeEtage from "./Etager/FjerdeEtage";
 
 function LokaleKort (){
     
@@ -23,7 +26,7 @@ function LokaleKort (){
         <div style={KortStyle} >
         {selectedFloor === 'FørsteEtage' && 
         <div id="FørsteEtage">
-        
+        <FørsteEtage />
             
             </div>}
         {selectedFloor === 'AndenEtage' && <div id="AndenEtage">
@@ -31,12 +34,11 @@ function LokaleKort (){
             
             </div>}
         {selectedFloor === 'TredjeEtage' && <div id="TredjeEtage">  
-          
+            <TredjeEtage />
             </div>}
 
         {selectedFloor === 'FjerdeEtage' && <div id="FjerdeEtage">
-           
-            
+            <FjerdeEtage />
             </div>}
         </div>
         <select onChange={handleChange} value={selectedFloor}>

@@ -1,4 +1,4 @@
-import './FjerdeEtageStyle'
+import './FjerdeEtageStyle.css'
 
 function FjerdeEtage (){
 return(

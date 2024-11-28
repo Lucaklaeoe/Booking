@@ -1,4 +1,4 @@
-import './AndenEtageStyle';
+import './AndenEtageStyle.css';
 function AndenEtage () {
 return (
     <div>

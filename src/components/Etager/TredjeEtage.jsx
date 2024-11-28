@@ -1,4 +1,4 @@
-import './TredjeEtageStyle'
+import './TredjeEtageStyle.css'
 
 const TredjeEtage = () => {
 return (
