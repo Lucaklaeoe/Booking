@@ -33,7 +33,10 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid, setUserBookingData
 
     const openConfirmCancellationPopup = () => setPopupState("confirm");
 
-    const closeConfirmCancellationPopup = () => setPopupState(null);
+    const closeConfirmCancellationPopup = () => {
+        setUserBookingData((prevBookings) => prevBookings.filter((booking) => booking.id !== id));
+        setPopupState(null);
+    }
 
     return (
         <div style={itemStyle}>
