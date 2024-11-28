@@ -23,20 +23,21 @@ function LokaleKort (){
         <div style={KortStyle} >
         {selectedFloor === 'FørsteEtage' && 
         <div id="FørsteEtage">
-            <img src="Kort/1etageskole-01.svg" alt="" />
+        
             
             </div>}
         {selectedFloor === 'AndenEtage' && <div id="AndenEtage">
-            <img src="Kort/2salskole-01.svg" alt="" />
+            <AndenEtage />
             
             </div>}
         {selectedFloor === 'TredjeEtage' && <div id="TredjeEtage">  
-            <img src="Kort/3etagekort-01-01.svg" alt="" />
-            
+          
             </div>}
 
         {selectedFloor === 'FjerdeEtage' && <div id="FjerdeEtage">
-            <img src="Kort/4etagekort-01.svg" alt="" /></div>}
+           
+            
+            </div>}
         </div>
         <select onChange={handleChange} value={selectedFloor}>
                 <option value="FørsteEtage">Første Etage</option>

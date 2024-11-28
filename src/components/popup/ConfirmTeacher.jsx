@@ -29,8 +29,7 @@ function confirmTeacher({name}) {
                     <p>Lokale: <b>{name}</b></p>
                     <p>Dato: <b>08/12/2024</b> </p>
                     <p>Tidspunkt: <b>13:00 - 15:00</b></p>
-                    <p>Vær opmærksom på at hvis du er studerende kan få din booking overskrevet  af en underviser, hvis der er mere end 24 timer til din booking. Du vil få en mail med begrundelse for aflysningen. </p>
-                    <p>Er der under 24 timer til din booking og en underviser vil booke lokalet, vil du få en mail med en anmodning om at overtage bookingen. Du må selv bestemme om du vil beholde eller overgive bookingen.</p>
+                    <p>Din booking har nu overskrevet en andens, og der bliver sendt en besked til vedkommende. </p>
                     <Link to={"ownBooking"}>
                         <Button 
                             type="submit" 

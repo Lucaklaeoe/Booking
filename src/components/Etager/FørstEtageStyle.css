@@ -1,0 +1,40 @@
+
+.cls-1 {
+  stroke-width: 5px;
+}
+
+.cls-1, .cls-2, .cls-3 {
+  fill: #868e96;
+}
+
+.cls-1, .cls-2, .cls-3, .cls-4 {
+  stroke-miterlimit: 10;
+}
+
+.cls-1, .cls-3, .cls-4 {
+  stroke: #231f20;
+}
+
+.cls-2 {
+  stroke: #000;
+}
+
+.cls-5 {
+  stroke-width: 0px;
+}
+
+.cls-3, .cls-4 {
+  stroke-width: 3px;
+}
+
+.cls-6 {
+  fill: #231f20;
+  font-family: SegoeUIVariable-SemiboldText, 'Segoe UI Variable';
+  font-size: 14px;
+  font-variation-settings: 'wght' 600, 'opsz' 10;
+  font-weight: 600;
+}
+
+.cls-4 {
+  fill: #309e48;
+}
