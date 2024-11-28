@@ -57,7 +57,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                     "apikey": supabaseKey,
-                    "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+                    "Authorization": `Bearer ${context.userInfo.session.access_token}`,  
+                    'Prefer': 'return=representation'             
                 }
             })
             const data = await response.json();
@@ -86,7 +87,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
                 "Content-Type": "application/json",
                 "Accept": "application/json",
                 "apikey": supabaseKey,
-                "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+                "Authorization": `Bearer ${context.userInfo.session.access_token}`,      
+                'Prefer': 'return=representation'          
             }
         })
         const data = await response.json();
@@ -103,8 +105,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
 
   return (
     <div style={TiderStyle}>
-        {isPopupOpen && <Confirm onClose={openPopup} />}
-        {isPopupOpenTeacher && <ConfirmTeacher onClose={openPopupTeacher}/>}
+        {isPopupOpen && <Confirm onClose={openPopup} lokale={selectedInfo.lokale} starttid={selectedInfo.startTime} sluttid={selectedInfo.endTime} date={context.bookingInfo.date}/>}
+        {isPopupOpenTeacher && <ConfirmTeacher onClose={openPopupTeacher} lokale={selectedInfo.lokale} starttid={selectedInfo.startTime} sluttid={selectedInfo.endTime} date={context.bookingInfo.date}/>}
         {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
 
         <div style={{display:"flex", flexDirection:"column"}}>
