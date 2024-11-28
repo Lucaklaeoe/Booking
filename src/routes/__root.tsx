@@ -43,12 +43,6 @@ function RootRouteWithLayout() {
         <Link to="/ownBooking">
           <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
         </Link>
-        <Link to="/login">
-          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Login (remove later)</Button>
-        </Link>
-        <Link to="/">
-          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>index (gamle lokale filter) (remove later)</Button>
-        </Link>
         
       </div>
     
