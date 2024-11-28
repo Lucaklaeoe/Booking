@@ -10,7 +10,7 @@ const Lokaler = {
   width:"926px",
   padding:"26px 55px",
   color: "#364FC7",
-  marginBottom:"263px",
+  marginBottom:"100px",
 }
 const LokaleOversigtStyle = {
   display:"flex",

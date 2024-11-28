@@ -18,7 +18,9 @@
       .cls-5 {
         stroke-width: 0px;
       }
-
+      .icon {
+        fill: black ;
+      }
       .cls-2, .cls-3, .cls-4 {
         stroke-width: 3px;
       }

@@ -14,15 +14,35 @@ function LokaleKort (){
         const handleChange = (event) => {
             setSelectedFloor(event.target.value);
         };
-    
+    const OversigtStyle = {
+    display:"flex",
+     justifyContent:"center", 
+     alignItems:"center", 
+     background:"#A5D8FF",
+     width:"fit-content",
+     margin:"0 auto",
+     borderRadius:"20px",
+
+    }
     const KortStyle = {
         width:"1000px",
         height:"700px",
         overflow:"hidden"
     }
-
+    const Selector = {
+        position:"relative",
+        right:"120px"
+    }
+    const Titel = {
+        position:"relative",
+       bottom:"200px",
+       left:"100px",
+       color:"#364fc7"
+    }
     return (
-        <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+
+        <div style={OversigtStyle}>
+        <h1 style={Titel}>Lokale Oversigt</h1>
         <div style={KortStyle} >
         {selectedFloor === 'FørsteEtage' && 
         <div id="FørsteEtage">
@@ -41,7 +61,7 @@ function LokaleKort (){
             <FjerdeEtage />
             </div>}
         </div>
-        <select onChange={handleChange} value={selectedFloor}>
+        <select style={Selector} onChange={handleChange} value={selectedFloor}>
                 <option value="FørsteEtage">Første Etage</option>
                 <option value="AndenEtage">Anden Etage</option>
                 <option value="TredjeEtage">Tredje Etage</option>
