@@ -43,8 +43,9 @@ function Login() {
         })
         .then()
         const userData = await response.json();
-                 
-        const compinedData = {...data, ...userData}
+        const newdata = {userdata: userData[0]}
+
+        const compinedData = {...data, ...newdata}
 
         //save data in context
         context.setUserInfo(compinedData)
