@@ -6,7 +6,7 @@ import { IoInformation } from "react-icons/io5";
 import FarvePopup from './../popup/farver.jsx';
 import LokaleBillede from './lokaleBillede.jsx';
 import { useRouteContext } from '@tanstack/react-router';
-import { ConfirmTeacher } from '../popup/ConfirmTeacher.jsx';
+import ConfirmTeacher from './../popup/ConfirmTeacher.jsx';
 
 const TiderStyle = {
   display: "flex", 
@@ -19,11 +19,13 @@ const TiderStyle = {
 }
 
 function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBooking}) {
-
-  
-
     const theme = useMantineTheme();
     const context = useRouteContext({ from: "/BookLokale" });
+
+    console.log("context", context)
+    if(context.bookingInfo.startTime != ""){
+        setStepper("2");
+    }
 
     const [selectedInfo, setSelectedInfo] = useState({lokale: lokale, startTime: context.bookingInfo.startTime, endTime: context.bookingInfo.endTime});
 
@@ -92,7 +94,6 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
         if(response.ok){
             openPopup();
         }
-        
     }
   
     const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
@@ -103,7 +104,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
   return (
     <div style={TiderStyle}>
         {isPopupOpen && <Confirm onClose={openPopup} />}
-        {isPopupOpenTeacher && <ConfirmTeacher onClose={openPopupTeacher} />}
+        {isPopupOpenTeacher && <ConfirmTeacher onClose={openPopupTeacher}/>}
         {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
 
         <div style={{display:"flex", flexDirection:"column"}}>
@@ -125,10 +126,8 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
         </div>
 
         <div style={{alignSelf:"center"}}>
-            <Button style={{alignSelf:"center"}} onClick={addBooking} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>
-            
+            <Button style={{alignSelf:"center"}} onClick={addBooking} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>      
         </div>
-
 
         <div style={{position:"absolute", top:"10px", right:"10px", display:"flex", alignItems:"center"}}>
 

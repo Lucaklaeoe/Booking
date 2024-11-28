@@ -42,8 +42,6 @@ function OwnBookingList() {
         const data = await response.json();
 
         setUserBookingData(data)
-        console.log(data)
-        console.log(context.userInfo.user.id)
     }
 
     useEffect(() => {
