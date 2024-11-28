@@ -77,7 +77,7 @@ function Login() {
         })
 
         //when clicked go to home
-        window.location.href = "/";
+        return <Navigate to="/"></Navigate>
     }
       
     //on logind click
