@@ -22,6 +22,11 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
     const theme = useMantineTheme();
     const context = useRouteContext({ from: "/BookLokale" });
 
+    console.log("context", context)
+    if(context.bookingInfo.startTime != ""){
+        setStepper("2");
+    }
+
     const [selectedInfo, setSelectedInfo] = useState({lokale: lokale, startTime: context.bookingInfo.startTime, endTime: context.bookingInfo.endTime});
 
     const [isPopupOpen, setIsPopupOpen] = useState(false);
