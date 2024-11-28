@@ -73,7 +73,9 @@ function Login() {
             method: "DELETE",
             headers: {
                 "apikey": supabaseKey,
-                "Authorization": `Bearer ${data.session.access_token}`,                
+                "Authorization": `Bearer ${data.session.access_token}`, 
+                "Content-Type": "application/json",
+                "Prefer": "return=representation",               
             }
         })
 
