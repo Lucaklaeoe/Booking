@@ -16,6 +16,12 @@ function LokaleBilleder({ lokale }) {
             "img/lokale3-2.jpg",
             "img/lokale3-2-2.jpg",
         ],
+        "2.21": [
+            "img/lokale-2-21.JPG",
+            "img/lokale-2-21-2.JPG",
+            "img/lokale-2-21-3.JPG",
+            "img/lokale-2-21-4.JPG",
+        ],
     };
 
     const images = lokaleImages[lokale] || [];
