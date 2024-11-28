@@ -23,17 +23,7 @@ const inputStyle = {
 function Login() {
     const context = useRouteContext({ from: "/login" });
 
-
-    // if(localStorage.getItem("token") != null){
-    //     console.log("token", localStorage.getItem("token"))
-    //     context.setUserInfo(localStorage.getItem("token"))
-    //     return(
-    //         <div>
-    //             <Navigate to="/"></Navigate>
-    //         </div>
-    //     )
-    // }
-
+    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setemailError] = useState('')
@@ -45,12 +35,23 @@ function Login() {
             {email: email,password: password,},
         )
         .then()
+        const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/userData?user_id=eq.${data.user.id}`, {
+            headers: {
+                "apikey": supabaseKey,
+                "Authorization": `Bearer ${data.session.access_token}`,
+            }
+        })
+        .then()
+        const userData = await response.json();
+                 
+        const compinedData = {...data, ...userData}
+
         //save data in context
-        context.setUserInfo(data)
-        console.log("data", data)
+        context.setUserInfo(compinedData)
+        console.log("data", compinedData)
 
         //save token in localstorage
-        localStorage.setItem("token", JSON.stringify(data))
+        localStorage.setItem("token", JSON.stringify(compinedData))
         //set token for an hour later
         //3600000 == 1 hour
         const gettime = Date.now() + 3000000;
@@ -66,8 +67,7 @@ function Login() {
         //chatgpt formating
         const today = new Date().toISOString().split('T')[0]
         //chatgpt stops here
-        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
-        const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${data.user.id}&bookingDate=lt.${today}`, {
+        await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${data.user.id}&bookingDate=lt.${today}`, {
             method: "DELETE",
             headers: {
                 "apikey": supabaseKey,
