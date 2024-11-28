@@ -58,6 +58,15 @@ function LedigeLokalerList({lokaler, times, date}) {
           let found = false;
           for (let k = 0; k < data.length; k++) {
             if (lokaler[i].lokale == data[k].roomNumber && times[j].startTime == data[k].startTime.slice(0, -3)) {
+              if(context.userInfo.userdata.isTeacher && data[k].isTeacher == false){
+                lokaleAndTime.push({
+                  lokale: lokaler[i].lokale,
+                  etage: lokaler[i].etage,
+                  startTime: times[j].startTime,
+                  endTime: times[j].endTime,
+                  date: date,
+                });
+              }
               // Bryd ud af det inderste loop, hvis der er match
               found = true;
               break;
