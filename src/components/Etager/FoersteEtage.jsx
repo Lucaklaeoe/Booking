@@ -1,4 +1,4 @@
-import './FørsteEtageStyle';
+import './FoersteEtageStyle.css';
 function FørsteEtage() {
     return (
         <div>
