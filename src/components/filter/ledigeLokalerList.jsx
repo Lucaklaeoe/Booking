@@ -24,7 +24,7 @@ const LokaleOversigtStyle = {
 function LedigeLokalerList({lokaler, times, date}) {
  
   const context = useRouteContext({ from: "/" });
-  const lokaleAndTime = [];
+  var lokaleAndTime = [];
   const [bookings, setBookings] = useState([]);
 
   async function getBookingsfortoday() {
@@ -46,7 +46,7 @@ function LedigeLokalerList({lokaler, times, date}) {
     }
 
     //reset lokaleAndTime
-    setBookings([])
+    lokaleAndTime = [];
     //hvis der ikke er noget i data basen
     if (data.length === 0) {
       for (let i = 0; i < lokaler.length; i++) {
