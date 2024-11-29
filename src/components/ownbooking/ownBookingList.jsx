@@ -36,7 +36,9 @@ function OwnBookingList() {
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${userId}`, {
             headers: {
                 "apikey": supabaseKey,
-                "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+                "Authorization": `Bearer ${context.userInfo.session.access_token}`,   
+                "Prefer": "return=representation",
+                "content-type": "application/json"            
             }
         })
         const data = await response.json();
@@ -46,7 +48,6 @@ function OwnBookingList() {
 
     useEffect(() => {
         getUserBookings()
-
     }, []);
 
     return (
@@ -60,7 +61,7 @@ function OwnBookingList() {
             </div>
             <div style={ownBookingListStyle}>
                 {userBookingData.map((booking) => (
-                    <OwnBookingItem id={booking.id} dato={booking.bookingDate} lokale={booking.roomNumber} starttid={booking.startTime} sluttid={booking.endTime} setUserBookingData={setUserBookingData} />
+                    <OwnBookingItem key={booking.id} id={booking.id} dato={booking.bookingDate} lokale={booking.roomNumber} starttid={booking.startTime} sluttid={booking.endTime} setUserBookingData={setUserBookingData} />
                 ))}
             </div>
         </div>

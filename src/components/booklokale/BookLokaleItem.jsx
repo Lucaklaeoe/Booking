@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, useMantineTheme } from '@mantine/core';
 import Confirm from '../popup/confirm.jsx';
 import Tider from './tider.jsx';
@@ -21,10 +21,6 @@ const TiderStyle = {
 function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBooking}) {
     const theme = useMantineTheme();
     const context = useRouteContext({ from: "/BookLokale" });
-
-    if(context.bookingInfo.startTime != ""){
-        setStepper("2");
-    }
 
     const [selectedInfo, setSelectedInfo] = useState({lokale: lokale, startTime: context.bookingInfo.startTime, endTime: context.bookingInfo.endTime});
 
@@ -96,6 +92,12 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             openPopup();
         }
     }
+
+    useEffect(() => {
+        if(context.bookingInfo.startTime != ""){
+            setStepper("2");
+        }
+    }, [])
   
     const [isInfoPopupOpen, setIsInfoPopupOpen] = useState(false);
     const changeInfoPopup = () => {
@@ -120,7 +122,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", gap:"10%"}}>
                 {
                     times.map((time) => (
-                        <Tider start={time.startTime} end={time.endTime} status={time.bookingStatus} setStepper={setStepper} setActiveBooking={setActiveBooking} activeBooking={activeBooking} lokale={lokale} setSelectedInfo={setSelectedInfo} />
+                        <Tider key={lokale + time.endTime} start={time.startTime} end={time.endTime} status={time.bookingStatus} setStepper={setStepper} setActiveBooking={setActiveBooking} activeBooking={activeBooking} lokale={lokale} setSelectedInfo={setSelectedInfo} />
                     ))
                 }
             </div>

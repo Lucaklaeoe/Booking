@@ -5,6 +5,7 @@ import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
 import { useRouteContext, Link, Navigate } from '@tanstack/react-router';
 import { useEffect } from "react";
+import { set } from "react-ga";
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
@@ -102,18 +103,13 @@ function Login() {
     //if token is not expired
     useEffect(() => {
         if(Date.now() < localStorage.getItem("tokenTime")){
+            console.log(JSON.parse(localStorage.getItem("token")))
             context.setUserInfo(JSON.parse(localStorage.getItem("token")))
             console.log("token not expired")
 
-            navigateToIndex();
+            setGoToIndex(true);
         }
     })
-
-    function navigateToIndex() {
-        return(
-            <Navigate to="/"></Navigate>
-        )
-    }
 
     return (
         <div>

@@ -16,7 +16,9 @@ function BookLokale({setStepper}) {
     const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}`, {
         headers: {
           "apikey": supabaseKey,
-          "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
+          "Authorization": `Bearer ${context.userInfo.session.access_token}`,
+          "Prefer": "return=representation",
+          "content-type": "application/json"            
         }
     })
     const data = await response.json();
@@ -138,7 +140,7 @@ function BookLokale({setStepper}) {
 
       {
         filteredLokale.map((lokale) => (
-          <BookLokaleItem lokale={lokale.lokale} times={lokale.ableTimes} setStepper={setStepper} activeBooking={activeBooking} setActiveBooking={setActiveBooking} />
+          <BookLokaleItem key={lokale.lokale + lokale.ableTimes.startTime} lokale={lokale.lokale} times={lokale.ableTimes} setStepper={setStepper} activeBooking={activeBooking} setActiveBooking={setActiveBooking} />
         ))
       }
       

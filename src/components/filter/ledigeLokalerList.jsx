@@ -28,15 +28,25 @@ function LedigeLokalerList({lokaler, times, date}) {
   const [bookings, setBookings] = useState([]);
 
   async function getBookingsfortoday() {
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
-    const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${date}`, {
-        headers: {
-            "apikey": supabaseKey,
-            "Authorization": `Bearer ${context.userInfo.session.access_token}`,                
-        }
-    })
-    const data = await response.json();
+    var data = [];
+    try{
+      const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
+      const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${date}`, {
+          headers: {
+              "apikey": supabaseKey,
+              "Authorization": `Bearer ${context.userInfo.session.access_token}`,
+              "prefer": "return=representation",
+              "Content-Type": "application/json"           
+          }
+      })
+      data = await response.json();
+    }
+    catch (error) {
+      console.log(error)
+    }
 
+    //reset lokaleAndTime
+    setBookings([])
     //hvis der ikke er noget i data basen
     if (data.length === 0) {
       for (let i = 0; i < lokaler.length; i++) {
@@ -85,12 +95,12 @@ function LedigeLokalerList({lokaler, times, date}) {
         }
       }
     }   
-    console.log('lokaleAndTime:', lokaleAndTime)
+
     setBookings(lokaleAndTime)
   }
 
   useEffect(() => {
-    getBookingsfortoday()
+    getBookingsfortoday();
   }, []);
 
   return (
@@ -104,7 +114,7 @@ function LedigeLokalerList({lokaler, times, date}) {
         <div style={LokaleOversigtStyle}>
         {
           bookings.map((data) => (
-            <LedigeLokalerItem lokale={data.lokale} etage={data.etage} startTime={data.startTime} endTime={data.endTime} date={data.date}/>
+            <LedigeLokalerItem key={data.lokale + data.startTime} lokale={data.lokale} etage={data.etage} startTime={data.startTime} endTime={data.endTime} date={data.date}/>
           ))
         }
         </div>
