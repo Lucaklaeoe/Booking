@@ -2,6 +2,7 @@ import { DateInput } from '@mantine/dates';
 import { Button, Autocomplete } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 import { useRouteContext } from '@tanstack/react-router';
+import { useState } from "react";
 
 const BookLokaleStyle = {
     display: "flex",
@@ -20,9 +21,11 @@ const BookStyle = {
     marginBottom:"140px",
 }
 
-function Filter({etage, setEtage, filterDate, setFilterDate}) { 
+function Filter({filterDate, setFilterDate}) { 
 
     const context = useRouteContext({ from: "/" });
+    const [etage, setEtage] = useState('');
+
 
     function handleButtonClick() {
 

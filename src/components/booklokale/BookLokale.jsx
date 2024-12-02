@@ -11,9 +11,22 @@ function BookLokale({setStepper}) {
   const [filteredLokale, setFilteredLokale] = useState([]);
   const [activeBooking, setActiveBooking] = useState(null);
 
-  async function StatusOfBookings() {    
+  async function StatusOfBookings() {   
+    
+    var response = "";
     const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
-    const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}`, {
+    if(context.bookingInfo.lokale == undefined || context.bookingInfo.lokale == null || context.bookingInfo.lokale == ""){
+      response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}`, {
+          headers: {
+            "apikey": supabaseKey,
+            "Authorization": `Bearer ${context.userInfo.session.access_token}`,
+            "Prefer": "return=representation",
+            "content-type": "application/json"            
+          }
+      })
+    }
+    else{
+      response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?bookingDate=eq.${context.bookingInfo.date}&floor=eq.${context.bookingInfo.etage}&roomNumber=eq.${context.bookingInfo.lokale}`, {
         headers: {
           "apikey": supabaseKey,
           "Authorization": `Bearer ${context.userInfo.session.access_token}`,
@@ -21,6 +34,7 @@ function BookLokale({setStepper}) {
           "content-type": "application/json"            
         }
     })
+    }
     const data = await response.json();
     console.log("data",data)
 
@@ -39,10 +53,13 @@ function BookLokale({setStepper}) {
       {lokale: "3.5", etage: "3"},
       {lokale: "3.6", etage: "3"},
       {lokale: "3.7", etage: "3"},
-      {lokale: "3.8 Open Learning", etage: "3"},
       {lokale: "3.9 Open Learning", etage: "3"},
       {lokale: "3.10", etage: "3"},
       {lokale: "3.11", etage: "3"},
+      //4
+      {lokale: "4.1", etage: "4"},
+      {lokale: "4.2", etage: "4"},
+      {lokale: "4.3", etage: "4"},
     ];
     const times = [
       { startTime: "08:30", endTime: "09:30" },
@@ -61,62 +78,66 @@ function BookLokale({setStepper}) {
     if(data.length === 0){
       for (let i = 0; i < lokaleListe.length; i++) {
         if(lokaleListe[i].etage == context.bookingInfo.etage){
-          for (let j = 0; j < times.length; j++) {
-            ableTimes.push({
-              startTime: times[j].startTime,
-              endTime: times[j].endTime,
-              bookingStatus: "ledig"
+          if(lokaleListe[i].lokale == context.bookingInfo.lokale || context.bookingInfo.lokale == ""){
+            for (let j = 0; j < times.length; j++) {
+              ableTimes.push({
+                startTime: times[j].startTime,
+                endTime: times[j].endTime,
+                bookingStatus: "ledig"
+              })
+            }
+            lokaleAndAbleTimes.push({
+              lokale: lokaleListe[i].lokale,
+              ableTimes: ableTimes
             })
+            ableTimes = [];
           }
-          lokaleAndAbleTimes.push({
-            lokale: lokaleListe[i].lokale,
-            ableTimes: ableTimes
-          })
-          ableTimes = [];
         }
       }
     }
     else{
       for (let i = 0; i < lokaleListe.length; i++) {
         if (lokaleListe[i].etage == context.bookingInfo.etage) {
-          ableTimes = [];
-          for (let j = 0; j < times.length; j++) {
-            let found = false;
-            
-            for (let k = 0; k < data.length; k++) {
-              if (times[j].startTime == data[k].startTime.slice(0, -3) && lokaleListe[i].lokale == data[k].roomNumber) {
-                if(data[k].isTeacher){
-                  ableTimes.push({
-                    startTime: times[j].startTime,
-                    endTime: times[j].endTime,
-                    bookingStatus: "teacher"
-                  });
+          if(lokaleListe[i].lokale == context.bookingInfo.lokale || context.bookingInfo.lokale == ""){
+            ableTimes = [];
+            for (let j = 0; j < times.length; j++) {
+              let found = false;
+              
+              for (let k = 0; k < data.length; k++) {
+                if (times[j].startTime == data[k].startTime.slice(0, -3) && lokaleListe[i].lokale == data[k].roomNumber) {
+                  if(data[k].isTeacher){
+                    ableTimes.push({
+                      startTime: times[j].startTime,
+                      endTime: times[j].endTime,
+                      bookingStatus: "teacher"
+                    });
+                  }
+                  else{
+                    ableTimes.push({
+                      startTime: times[j].startTime,
+                      endTime: times[j].endTime,
+                      bookingStatus: "optaget"
+                    });
+                  }
+                  //only one booking pr. time allowed break if found
+                  found = true;
+                  break; 
                 }
-                else{
-                  ableTimes.push({
-                    startTime: times[j].startTime,
-                    endTime: times[j].endTime,
-                    bookingStatus: "optaget"
-                  });
-                }
-                //only one booking pr. time allowed break if found
-                found = true;
-                break; 
+              }
+              // If no match found, it's available
+              if (!found) {
+                ableTimes.push({
+                  startTime: times[j].startTime,
+                  endTime: times[j].endTime,
+                  bookingStatus: "ledig"
+                });
               }
             }
-            // If no match found, it's available
-            if (!found) {
-              ableTimes.push({
-                startTime: times[j].startTime,
-                endTime: times[j].endTime,
-                bookingStatus: "ledig"
-              });
-            }
+            lokaleAndAbleTimes.push({
+              lokale: lokaleListe[i].lokale,
+              ableTimes: ableTimes
+            });
           }
-          lokaleAndAbleTimes.push({
-            lokale: lokaleListe[i].lokale,
-            ableTimes: ableTimes
-          });
         }
       }
     }

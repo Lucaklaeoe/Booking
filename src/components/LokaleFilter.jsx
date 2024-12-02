@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LedigeLokalerList from "./../components/filter/ledigeLokalerList";
 import Filter from './../components/filter/filter';
-import LokaleKort from './Kort';
+import LokaleKort from './filter/Kort';
 
 const Container ={
   display:"flex",
@@ -9,7 +9,6 @@ const Container ={
 }
 
 function LokaleFilter() {
-  const [etage, setEtage] = useState('');
   const [filterDate, setFilterDate] = useState(new Date());
 
   //chatgpt linje formater om til yyyy-mm-dd format
@@ -30,10 +29,13 @@ function LokaleFilter() {
     {lokale: "3.5", etage: "3"},
     {lokale: "3.6", etage: "3"},
     {lokale: "3.7", etage: "3"},
-    {lokale: "3.8 Open Learning", etage: "3"},
     {lokale: "3.9 Open Learning", etage: "3"},
     {lokale: "3.10", etage: "3"},
     {lokale: "3.11", etage: "3"},
+    //4
+    {lokale: "4.1", etage: "4"},
+    {lokale: "4.2", etage: "4"},
+    {lokale: "4.3", etage: "4"},
   ];
 
   const times = [
@@ -50,8 +52,6 @@ function LokaleFilter() {
   return (
     <div style={Container}>
       <Filter
-        etage={etage}
-        setEtage={setEtage}
         filterDate={filterDate}
         setFilterDate={setFilterDate}
       />
@@ -59,7 +59,6 @@ function LokaleFilter() {
         lokaler={lokaleListe}
         times={times}
         date={formattedDate}
-        etage={etage}
       />
       <LokaleKort />
     </div>
