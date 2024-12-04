@@ -35,9 +35,16 @@ function Login() {
     async function signUpNewUser() {
         //console.log("sending to supabase", email, password);
         const { data, error } = await supabase.auth.signInWithPassword(
-            {email: email,password: password,},
+            {email: email, password: password,},
         )
         .then()
+        if(error){
+            console.log("error", error)
+            setemailError(error.message)
+            setpasswordError(error.message)
+            return
+        }
+
         const response = await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/userData?user_id=eq.${data.user.id}`, {
             headers: {
                 "apikey": supabaseKey,
@@ -60,12 +67,6 @@ function Login() {
         //3600000 == 1 hour
         const gettime = Date.now() + 3000000;
         localStorage.setItem("tokenTime", gettime)
-
-        if(error != null){
-            console.log("error", error)
-            setemailError(error.message)
-            setpasswordError(error.message)
-        }
 
         //delete all old bookings from (not including) today
         //chatgpt formating
