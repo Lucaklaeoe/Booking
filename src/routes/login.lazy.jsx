@@ -5,6 +5,7 @@ export const Route = createLazyFileRoute('/login')({
   component: RouteComponent,
 })
 
+//style
 const loginStyle = {
   display: "flex",
   marginLeft: "138px",

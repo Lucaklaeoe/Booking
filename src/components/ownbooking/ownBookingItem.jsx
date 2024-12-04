@@ -28,12 +28,11 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid, setUserBookingData
     const [popupState, setPopupState] = useState(null);
 
     const closePopup = () => setPopupState(null);
-
     const openCancellationPopup = () => setPopupState("cancellation");
-
     const openConfirmCancellationPopup = () => setPopupState("confirm");
 
     const closeConfirmCancellationPopup = () => {
+        //filterer og gemmer alle id'er som ikke er ens med dens egen id
         setUserBookingData((prevBookings) => prevBookings.filter((booking) => booking.id !== id));
         setPopupState(null);
     }
@@ -59,7 +58,7 @@ function OwnBookingItem({id, dato, lokale, starttid, sluttid, setUserBookingData
             <div id={id} style={{ ...infoStyle, cursor: "pointer"}}>
                 <button onClick={openCancellationPopup} style={{backgroundColor: "#C92A2A", padding: "10px", borderRadius: "6px", color: "white", border: "none"}}> Annuller booking</button>
             </div>
-             {popupState === "cancellation" && <Cancellation onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} id={id}  setUserBookingData={setUserBookingData}/>}
+            {popupState === "cancellation" && <Cancellation onClose={closePopup} onConfirm={openConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} id={id}  setUserBookingData={setUserBookingData}/>}
             {popupState === "confirm" && <ConfirmCancellation onClose={closeConfirmCancellationPopup} starttid={starttid} sluttid={sluttid} />}
         </div>
     )

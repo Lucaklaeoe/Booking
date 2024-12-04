@@ -1,5 +1,5 @@
 import { DateInput } from '@mantine/dates';
-import { Button, Autocomplete } from '@mantine/core';
+import { Button, Select } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 import { useRouteContext } from '@tanstack/react-router';
 import { useState } from "react";
@@ -26,13 +26,8 @@ function Filter({filterDate, setFilterDate}) {
     const context = useRouteContext({ from: "/" });
     const [etage, setEtage] = useState('');
 
-
     function handleButtonClick() {
-
-        //chatgpt kode formater om til yyyy-mm-dd
         const formattedDate = filterDate.toISOString().split('T')[0];
-        //chat stop her
-        
         context.setBookingInfo({etage: etage, date: formattedDate, lokale: "", startTime: "", endTime: ""});
     }
 
@@ -41,7 +36,7 @@ function Filter({filterDate, setFilterDate}) {
             <h1>Book Lokale</h1>
 
             <div style={BookLokaleStyle}>
-                <Autocomplete placeholder="Etage" data={['1', '2', '3', '4']} 
+                <Select placeholder="Etage" data={['1', '2', '3', '4']} 
                     value={etage} 
                     onChange={(value) => setEtage(value)} 
                 />
@@ -52,6 +47,7 @@ function Filter({filterDate, setFilterDate}) {
                     minDate={new Date()}
                 />
                 
+                {/* Conditional rendering */}
                 {etage ? 
                     <Link to="/BookLokale">
                         <Button variant="filled" color="yellow" size="xl" radius="xs" onClick={handleButtonClick} style={{ color: "black" }}>SØG HER</Button>

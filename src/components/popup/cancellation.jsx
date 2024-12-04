@@ -2,33 +2,32 @@ import { Button } from '@mantine/core';
 import { useRouteContext } from "@tanstack/react-router";
 
 const centerBackground={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        position: "fixed",
-        top: "0",
-        left: "0",
-        right: "0",
-        bottom: "0",
-        backgroundColor: "rgba(0, 0, 0, 0.7)",
-          zIndex: " 3"
-    }
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    position: "fixed",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+        zIndex: " 3"
+}
 
-    const cancellationStyle={
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        flexDirection:"column",
-        backgroundColor: "#FFF",
-        bordorRadius: "4px",
-        padding: "26px 55px",
-        width: "762px",
-    }
-    const buttonStyle = {
-        color: "white",
-    }
-function cancellation({onClose, onConfirm, starttid, sluttid, id, setUserBookingData}) {
-
+const cancellationStyle={
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    flexDirection:"column",
+    backgroundColor: "#FFF",
+    bordorRadius: "4px",
+    padding: "26px 55px",
+    width: "762px",
+}
+const buttonStyle = {
+    color: "white",
+}
+function cancellation({onClose, onConfirm, starttid, sluttid, id}) {
 
     const context = useRouteContext({ from: "/ownBooking" });
 

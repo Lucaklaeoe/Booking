@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  createRootRouteWithContext,
-  Link,
-  Outlet,
-} from "@tanstack/react-router";
+import { createRootRouteWithContext, Link, Outlet } from "@tanstack/react-router";
 import { Button } from '@mantine/core';
 
 export interface RouterContext extends Record<any, any> {
@@ -14,6 +10,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootRouteWithLayout,
 });
 
+//style
 const headerStyle = {
   background: "#364fc7",
   padding: "11px 20px",
@@ -46,6 +43,7 @@ function RootRouteWithLayout() {
         
       </div>
     
+      {/* Indholdet på siden, bliver skiftet med en .lazy */}
       <Outlet />
 
       <div style={footerStyle}>

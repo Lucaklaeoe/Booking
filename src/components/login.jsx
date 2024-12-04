@@ -5,12 +5,12 @@ import { TextInput } from '@mantine/core';
 import { PasswordInput } from '@mantine/core';
 import { useRouteContext, Link, Navigate } from '@tanstack/react-router';
 import { useEffect } from "react";
-import { set } from "react-ga";
 
 const supabaseUrl = "https://nyxkyrlcppkrsubvkytj.supabase.co"
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
 const supabase = createClient(supabaseUrl, supabaseKey)
 
+//style
 const buttonStyle = {
     backgroundColor: "#F59F00",
     marginTop: "40px",
@@ -23,9 +23,8 @@ const inputStyle = {
 }
 
 function Login() {
+    //variabler
     const context = useRouteContext({ from: "/login" });
-
-    const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55eGt5cmxjcHBrcnN1YnZreXRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE5MjYzMzksImV4cCI6MjA0NzUwMjMzOX0.BUMwwqrzX0kdxKvVf7jd7p31BwDxDf0ZdilcfLh7WlA"
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailError, setemailError] = useState('')
@@ -53,32 +52,30 @@ function Login() {
         })
         .then()
         const userData = await response.json();
-        const newdata = {userdata: userData[0]}
 
+        //compine two objects
+        const newdata = {userdata: userData[0]}
         const compinedData = {...data, ...newdata}
 
         //save data in context
         context.setUserInfo(compinedData)
-        console.log("data", compinedData)
 
         //save token in localstorage
         localStorage.setItem("token", JSON.stringify(compinedData))
+
         //set token for an hour later
         //3600000 == 1 hour
         const gettime = Date.now() + 3000000;
         localStorage.setItem("tokenTime", gettime)
 
         //delete all old bookings from (not including) today
-        //chatgpt formating
+        //converts date to yyyy-mm-dd
         const today = new Date().toISOString().split('T')[0]
-        //chatgpt stops here
         await fetch(`https://nyxkyrlcppkrsubvkytj.supabase.co/rest/v1/currentBookings?user_id=eq.${data.user.id}&bookingDate=lt.${today}`, {
             method: "DELETE",
             headers: {
                 "apikey": supabaseKey,
-                "Authorization": `Bearer ${data.session.access_token}`, 
-                "Content-Type": "application/json",
-                "Prefer": "return=representation",               
+                "Authorization": `Bearer ${data.session.access_token}`,             
             }
         })
 
@@ -89,9 +86,10 @@ function Login() {
     //on logind click
     const handleSignup = (event) => {
         event.preventDefault();
-        console.log(email, password);
         signUpNewUser()
     }
+
+    //e giver data fra det sendte react component
     function updatEmail(e){
         setEmail(e.target.value)
         setemailError(null)
@@ -115,6 +113,7 @@ function Login() {
     return (
         <div>
             {goToIndex && <Navigate to="/"></Navigate>}
+
             <h1 style={{color: "#364FC7"}}>Login</h1>
             <form>
                 <TextInput

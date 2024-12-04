@@ -2,7 +2,6 @@ import LedigeLokalerItem from "./ledigeLokalerItem"
 import { useState, useEffect } from "react";
 import { useRouteContext } from "@tanstack/react-router";
 
-
 const Lokaler = {
   margin:"0 auto",
   borderRadius: "8px",
@@ -19,7 +18,6 @@ const LokaleOversigtStyle = {
   overflowY:"scroll",
  
 }
-
   
 function LedigeLokalerList({lokaler, times, date}) {
  

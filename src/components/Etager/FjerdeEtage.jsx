@@ -14,6 +14,7 @@ function FjerdeEtage (){
   }
 return(
   <div>   
+    {/* svg kode eksporteret fra illustator */}
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.89 595.28">
       <g id="Layer_8" data-name="Layer 8">
         <g id="Layer_2" data-name="Layer 2">

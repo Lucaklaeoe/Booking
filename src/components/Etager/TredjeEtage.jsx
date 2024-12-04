@@ -15,6 +15,7 @@ function TredjeEtage(){
 
   return (
     <div>
+      {/* svg kode eksporteret fra illustator */}
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841.89 595.28">
         <g id="base">
           <g id="Base">
