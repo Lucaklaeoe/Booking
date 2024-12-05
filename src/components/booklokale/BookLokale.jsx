@@ -155,7 +155,7 @@ function BookLokale({setStepper}) {
 
   return (
     <div style={{display:"flex", flexDirection:"column", gap:"50px"}}>
-      <h1 style={{color: theme.colors.blue[8]}}> 
+      <h1 style={{color: theme.colors.indigo[9]}}> 
         {context.bookingInfo.etage}. Etage og tider for den {context.bookingInfo.date} 
       </h1>
 

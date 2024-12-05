@@ -10,7 +10,7 @@ const loginStyle = {
   display: "flex",
   marginLeft: "138px",
   marginRight: "612px",
-  marginTop: "181px",
+  marginTop: "50px",
   backgroundColor: "#D0EBFF",
 }
 

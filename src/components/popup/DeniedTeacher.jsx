@@ -25,7 +25,7 @@ function deniedTeacher({name}) {
     return (
             <div>
                 <div style={deniedStyle}>
-                    <h1 style={{color: "#C92A2A"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/no.svg" alt="nægtet mærke" />Bookning bekræftet</h1>
+                    <h1 style={{color: "#C92A2A"}}><img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/no.svg" alt="nægtet mærke" />Booking bekræftet</h1>
                     <p>For at overskrive bookingen vedr. </p>
                     <p>Lokale: <b>{name}</b></p>
                     <p>Dato: <b>08/12/2024</b> </p>

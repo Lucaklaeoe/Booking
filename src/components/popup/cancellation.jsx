@@ -57,7 +57,7 @@ function cancellation({onClose, onConfirm, starttid, sluttid, id}) {
     return (
         <div style={centerBackground}>
             <div style={cancellationStyle}>
-                <h1 style={{color: "#364FC7"}}>Vil du annullere din bookning?</h1>
+                <h1 style={{color: "#364FC7"}}>Vil du annullere din booking?</h1>
                 <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                 <div style={{display:"flex", gap:"100px", marginTop:"30px"}}>
                     <Button 

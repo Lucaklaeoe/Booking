@@ -112,14 +112,14 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
         {isInfoPopupOpen && <FarvePopup onClose={changeInfoPopup}/>} 
 
         <div style={{display:"flex", flexDirection:"column"}}>
-            <h2 style={{color: theme.colors.blue[8], width:"250px"}}>
+            <h2 style={{color: theme.colors.indigo[9], width:"250px"}}>
                 Grupperum - {lokale}
             </h2>
             <LokaleBillede lokale={lokale} />
         </div>
 
         <div style={{width:"400px"}}>
-            <h2>Tider</h2>
+            <h2>Ledige tider</h2>
             <div style={{display:"flex", flexWrap:"wrap", justifyContent:"space-between", gap:"10%"}}>
                 {
                     times.map((time) => (

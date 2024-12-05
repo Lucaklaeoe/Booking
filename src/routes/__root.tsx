@@ -30,6 +30,10 @@ const footerStyle = {
   marginTop: "100px"
 }
 
+function logOut() {
+  localStorage.clear();
+}
+
 function RootRouteWithLayout() {
   return (
     <div style={{background: "#D0ebff", minHeight: "100vh"}}>
@@ -37,9 +41,14 @@ function RootRouteWithLayout() {
         <Link to="/">
           <img style={{height: "50px"}} src="cph-booking.png" alt="" />
         </Link>
-        <Link to="/ownBooking">
-          <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
-        </Link>
+        <div style={{display: "flex", gap: "10px"}}>
+          <Link to="/login">
+            <Button variant="filled" color="yellow" radius="xs" onClick={logOut} style={{ color: "black" }}>Log ud</Button>
+          </Link>
+          <Link to="/ownBooking">
+            <Button variant="filled" color="yellow" radius="xs" style={{ color: "black" }}>Mine bookinger</Button>
+          </Link>
+        </div>
         
       </div>
     

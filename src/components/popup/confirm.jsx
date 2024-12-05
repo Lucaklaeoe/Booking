@@ -36,7 +36,7 @@ function confirm({lokale, starttid, sluttid, date}) {
             <div style={centerBackground}>
                 <div style={confirmStyle}>
                     <h1 style={{color: "#2B8A3E"}}>
-                        <img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="" />Bookning bekræftet
+                        <img style={{width: "50px", height: "50px", marginRight: "20px"}} src="img/check.svg" alt="" />Booking bekræftet
                     </h1>
                     <p>Lokale: <b>{lokale}</b></p>
                     <p>Dato: <b>{date}</b></p>

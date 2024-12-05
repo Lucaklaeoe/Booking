@@ -35,7 +35,7 @@ function confirmCancellation({ onClose, starttid, sluttid}) {
     return (
             <div style={centerBackground}>
                 <div style={confirmStyle}>
-                    <h1 style={{color: "#2B8A3E"}}>Bookning annulleret</h1>
+                    <h1 style={{color: "#2B8A3E"}}>Booking annulleret</h1>
                     <p style={{color: "black"}}>Din booking {starttid} til {sluttid} vil blive annulleret </p>
                         <Button 
                             onClick={onClose}
@@ -44,7 +44,7 @@ function confirmCancellation({ onClose, starttid, sluttid}) {
                             color="#F08C00" 
                             size="xl" 
                             radius="md" 
-                            style={buttonStyle}>Til bookningner
+                            style={buttonStyle}>Til bookinger
                         </Button>
                 </div>
             </div>
