@@ -27,7 +27,7 @@ function ownBooking() {
   return (
     <div style={ownBookingStyle}>
 
-      <Title order={1} style={{ color: "#364FC7" }}>Dine bookinger</Title>
+      <Title order={1} style={{ color: "#364FC7", marginBottom: "20px" }}>Dine bookinger</Title>
       <OwnBookingList/>
 
     </div>

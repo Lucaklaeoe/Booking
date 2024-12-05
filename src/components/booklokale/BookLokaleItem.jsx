@@ -133,7 +133,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
             <Button style={{alignSelf:"center"}} onClick={addBooking} className='BookLokale' radius={"md"} size='xl' color="indigo">Book lokale</Button>      
         </div>
 
-        <div style={{position:"absolute", top:"10px", right:"10px", display:"flex", alignItems:"center"}}>
+        <div style={{position:"absolute", top:"10px", right:"35px", display:"flex", alignItems:"center"}}>
 
             <p style={{color: theme.colors.blue[8],fontWeight:"bold"}}>Hvad betyder farverne ?</p>
             <button style={{borderColor:"red", marginLeft:"10px"}} onClick={changeInfoPopup}>
