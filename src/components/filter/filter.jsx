@@ -27,7 +27,7 @@ function Filter({filterDate, setFilterDate}) {
     const [etage, setEtage] = useState('');
 
     function handleButtonClick() {
-        const formattedDate = filterDate.toISOString().split('T')[0];
+        const formattedDate = filterDate.toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
         context.setBookingInfo({etage: etage, date: formattedDate, lokale: "", startTime: "", endTime: ""});
     }
 
