@@ -21,7 +21,7 @@ function FarvePopup({onClose}) {
         display:"flex",
         flexDirection:"column",
         backgroundColor: "#FFF",
-        bordorRadius: "4px",
+        bordorRadius: "8px",
         padding:"12px 16px",
         width:"422px",
     }

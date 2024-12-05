@@ -19,7 +19,7 @@ const centerBackground={
         alignItems:"center",
         flexDirection:"column",
         backgroundColor: "#FFF",
-        bordorRadius: "4px",
+        bordorRadius: "8px",
         padding: "26px 55px",
         width: "762px",
     }
