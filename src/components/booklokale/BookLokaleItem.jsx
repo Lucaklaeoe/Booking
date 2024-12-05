@@ -34,6 +34,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
     };
 
     async function addBooking() {   
+        //undefined og null betyder næsten det samme, vi bruger begge for "sikkerhed"
         if(selectedInfo.startTime == undefined || selectedInfo.startTime == null || selectedInfo.startTime == ""){
             alert("Vælg venligst en tid");
             return;
@@ -69,6 +70,7 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
                 {
                     email: context.userInfo.user.email,
                     user_id: context.userInfo.user.id,
+                    isTeacher: context.userInfo.userdata.isTeacher,
 
                     bookingDate: context.bookingInfo.date,
                     floor: context.bookingInfo.etage,
@@ -76,7 +78,6 @@ function BookLokaleItem({setStepper, lokale, times, setActiveBooking, activeBook
                     startTime: selectedInfo.startTime + ":00",
                     endTime: selectedInfo.endTime + ":00",
                     roomNumber: selectedInfo.lokale,
-                    isTeacher: context.userInfo.userdata.isTeacher,
                 }),
             headers: {
                 "Content-Type": "application/json",

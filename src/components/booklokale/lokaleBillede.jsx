@@ -34,8 +34,28 @@ function LokaleBilleder({ lokale }) {
         setCurrentIndex((currentIndex - 1 + images.length) % images.length);
     };
 
+    //hvis der ikke er noget billed fundet
+    //erstat med standardbilled
     if (images.length === 0) {
-        return <div> </div>;
+        return(
+            <div>
+            <div style={{ width: "300px", height: "200px", display: "flex", overflow: "hidden" }}>
+                <img
+                    style={{ width: "300px", height: "200px" }}
+                    src={"img/lokale3-9.jpg"}
+                    alt={`Image of lokale empty`}
+                />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", width: "364px", position:"relative", bottom:"100px", right:"32px" }}>
+                <button  className="Chevron-Knap" onClick={handlePrev}>
+                    <FaChevronLeft />
+                </button>
+                <button className="Chevron-Knap" onClick={handleNext}>
+                    <FaChevronRight />
+                </button>
+            </div>
+        </div>
+        )
     }
 
     return (

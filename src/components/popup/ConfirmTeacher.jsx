@@ -1,7 +1,7 @@
 import { Button } from '@mantine/core';
 import { Link } from '@tanstack/react-router';
 
-function confirmTeacher({lokale, starttid, sluttid, etage, date}) {
+function confirmTeacher({lokale, starttid, sluttid, date}) {
 
     const confirmStyle={
         display:"flex",
