@@ -51,7 +51,7 @@ function confirm({lokale, starttid, sluttid, date}) {
                         color="#F08C00" 
                         size="xl" 
                         adius="md" 
-                        style={buttonStyle}>Til forsiden</Button>
+                        style={buttonStyle}>Mine bookinger</Button>
                     </Link>
                 </div>
             </div>
