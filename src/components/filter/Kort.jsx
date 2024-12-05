@@ -20,7 +20,6 @@ function LokaleKort (){
         marginBottom:"100px",
         background:"#A5D8FF",
         margin:"0 auto",
-        borderRadius:"8px",
         padding:"26px 55px",
 
     }
@@ -31,7 +30,8 @@ function LokaleKort (){
     }
     return (
         <div style={OversigtStyle}>
-            <h1 style={{alignSelf:"flex-start"}}>Lokale Oversigt</h1>
+            <h1 style={{alignSelf:"flex-start"}}>Book lokale via oversigten</h1>
+            <p style={{alignSelf:"flex-start"}}>Tryk på det lokale du ønsker at booke</p>
             <Select style={{alignSelf:"flex-start"}}
                 data={['FørsteEtage', 'AndenEtage', 'TredjeEtage', 'FjerdeEtage']}
                 placeholder="Vælg etage"
